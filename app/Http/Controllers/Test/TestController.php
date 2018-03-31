@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers\Test;
 
-use App\Http\Actions\IndexAction;
+use App\Http\Actions\IndexRepository;
+use App\Http\Actions\IndexValidation;
 use App\Http\Controllers\BaseController;
 
 class TestController extends BaseController
@@ -22,7 +23,7 @@ class TestController extends BaseController
 
 
     // X-Requested-With:XMLHttpRequest
-    public function test(IndexAction $action)
+    public function test(IndexRepository $action)
     {
 
         // php artisan lvsi:make
@@ -52,5 +53,19 @@ class TestController extends BaseController
         return file('../Controller.php');
 
     }
+
+
+
+    public function test2(IndexRepository $action){
+
+        // 1、Action
+        $data = $action -> handle() ;
+
+
+        // 2、Repository
+
+
+    }
+
 
 }

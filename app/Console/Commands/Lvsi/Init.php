@@ -1,0 +1,50 @@
+<?php
+
+namespace App\Console\Commands\Lvsi;
+
+use Illuminate\Console\Command;
+
+class Init extends Command
+{
+    /**
+     * The name and signature of the console command.
+     *
+     * @var string
+     */
+    protected $signature = 'lvsi:init';
+
+    /**
+     * The console command description.
+     *
+     * @var string
+     */
+    protected $description = "Init a Laravel App what it had done many things that you don't do";
+
+    /**
+     * Create a new command instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
+    /**
+     * Execute the console command.
+     *
+     * @return mixed
+     */
+    public function handle()
+    {
+
+        // 生成代码追踪
+        passthru('﻿composer require --dev barryvdh/laravel-ide-helper') ;
+        $this->call('ide-helper:generate');
+
+
+
+
+        return null ;
+    }
+}

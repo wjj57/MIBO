@@ -1,0 +1,21 @@
+<?php
+
+namespace DummyNamespace;
+
+use App\Models\Repository;
+
+class Repository extends BaseRepository
+{
+
+    protected $model = null;
+
+    function __construct(Repository $model)
+    {
+
+        $this->model = $model;
+    }
+
+
+
+
+}

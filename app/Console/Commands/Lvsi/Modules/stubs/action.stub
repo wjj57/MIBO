@@ -1,17 +1,10 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: qingyun
- * Date: 18/3/30
- * Time: 下午11:54
- */
 
-namespace App\Http\Actions;
-
+namespace DummyNamespace;
 
 use App\Http\Validations\IndexValidation;
 
-class IndexAction extends BaseAction
+class DummyAction extends BaseAction
 {
 
     protected $validation = null;

@@ -1,25 +1,24 @@
 <?php
 
-namespace App\Console\Commands;
+namespace App\Console\Commands\Lvsi\Modules;
 
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Artisan;
 
-class Lvsi extends Command
+class MakeModule extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'lvsi:init';
+    protected $signature = 'lvsi:makeModule {module} ';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = "Init a Laravel App what it had done many things that you don't do";
+    protected $description = 'Command description';
 
     /**
      * Create a new command instance.
@@ -39,13 +38,10 @@ class Lvsi extends Command
     public function handle()
     {
 
-        // 生成代码追踪
-        passthru('﻿composer require --dev barryvdh/laravel-ide-helper') ;
-        $this->call('ide-helper:generate');
+        $module = $this->argument('module') ;
 
-
-
-
-        return null ;
+        $this->call('lvsi:makeAction ' . $module );
+        $this->call('lvsi:makeValidation ' . $module );
+        $this->call('lvsi:makeRepository ' . $module );
     }
 }
