@@ -1098,7 +1098,7 @@ namespace Illuminate\Support\Facades {
         }
         
         /**
-         * An alias function name for make().
+         * An alias functions name for make().
          *
          * @param string $abstract
          * @param array $parameters
@@ -12843,7 +12843,7 @@ namespace  {
             }
          
             /**
-             * Register a replacement for the default delete function.
+             * Register a replacement for the default delete functions.
              *
              * @param \Closure $callback
              * @return void 
@@ -14358,7 +14358,7 @@ namespace  {
             }
          
             /**
-             * Execute an aggregate function on the database.
+             * Execute an aggregate functions on the database.
              *
              * @param string $function
              * @param array $columns
@@ -14371,7 +14371,7 @@ namespace  {
             }
          
             /**
-             * Execute a numeric aggregate function on the database.
+             * Execute a numeric aggregate functions on the database.
              *
              * @param string $function
              * @param array $columns
