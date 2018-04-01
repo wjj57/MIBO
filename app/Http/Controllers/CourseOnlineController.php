@@ -49,8 +49,6 @@ class CourseOnlineController extends Controller
             // 只做业务 , 并且要求业务完全只由它完成
             CourseOnlineManager::class => 'pay',
 
-            // 加入到队列
-            putIntoQueue::class => 'ssss'
 
         ]);
 

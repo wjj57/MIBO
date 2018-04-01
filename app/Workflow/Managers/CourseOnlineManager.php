@@ -9,6 +9,9 @@
 namespace App\Workflow\Managers;
 
 
+use App\Workflow\Managers\Queues\SendEMailQueue;
+use App\Workflow\Managers\Queues\SendSMSQueue;
+
 class CourseOnlineManager extends BaseManager
 {
 
@@ -23,8 +26,19 @@ class CourseOnlineManager extends BaseManager
     public function register()
     {
 
-        //
-        PhoneCaptcha::isValidate() ;
+        // 服务1开始处理
+        // 服务1处理结束
+        putIntoQueue( SendEMailQueue::class ) ;
+
+        // 服务2开始处理
+        // 服务2处理结束
+        putIntoQueue( SendSMSQueue::class ) ;
+
+
+        // 服务3开始处理
+        // 服务3处理结束
+        putIntoQueue(  ) ;
+
 
     }
 

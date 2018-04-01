@@ -12,4 +12,23 @@ namespace App\Workflow\Managers\Queues;
 class SendEMailQueue
 {
 
+    protected function before()
+    {
+
+
+    }
+
+    protected function after()
+    {
+
+
+    }
+
+    public function handle()
+    {
+
+        $this->before();
+
+    }
+
 }
