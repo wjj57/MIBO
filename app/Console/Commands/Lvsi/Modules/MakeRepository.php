@@ -2,43 +2,24 @@
 
 namespace App\Console\Commands\Lvsi\Modules;
 
-use Illuminate\Console\Command;
+use Illuminate\Console\GeneratorCommand;
 
-class MakeRepository extends Command
+class MakeRepository extends GeneratorCommand
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'lvsi:makeRepository {repository} ';
+    protected $signature = 'lvsi:makeRepository {name}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = '创建 Repository 层';
 
-    /**
-     * Create a new command instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
-    /**
-     * Execute the console command.
-     *
-     * @return mixed
-     */
-    public function handle()
-    {
-        //
-    }
 
     /**
      * Get the stub file for the generator.
@@ -47,7 +28,7 @@ class MakeRepository extends Command
      */
     protected function getStub()
     {
-        return __DIR__ . './stubs/repository.stub';
+        return __DIR__ . '/stubs/repository.stub';
     }
 
     /**

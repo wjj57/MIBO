@@ -4,7 +4,7 @@ namespace DummyNamespace;
 
 use App\Models\Repository;
 
-class Repository extends BaseRepository
+class DummyClass extends BaseRepository
 {
 
     protected $model = null;

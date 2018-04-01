@@ -4,21 +4,21 @@ namespace App\Console\Commands\Lvsi\Modules;
 
 use Illuminate\Console\Command;
 
-class MakeModule extends Command
+class DestroyModule extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'lvsi:makeModule {module}';
+    protected $signature = 'lvsi:destroyModule {module}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = '创建一个完整的 Module = Action + Validation + Repository';
+    protected $description = '删除一个 Module = Action + Validation + Repository';
 
     /**
      * Execute the console command.
@@ -30,18 +30,15 @@ class MakeModule extends Command
 
         $module = $this->argument('module');
 
-        try {
+        try{
 
             $this->call('lvsi:makeAction', ['name' => $module]);
             $this->call('lvsi:makeValidation', ['name' => $module]);
             $this->call('lvsi:makeRepository', ['name' => $module]);
-        } catch (\Exception $e) {
+        }catch(\Exception $e){
 
-            $this->error('创建失败,因为此模块中的部分文件已存在,请自行处理');
-            return ;
+            $this->call('lvsi:destroyModule') ;
         }
 
-        $this->info('创建成功') ;
-        return;
     }
 }

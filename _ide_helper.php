@@ -8883,7 +8883,7 @@ namespace Illuminate\Support\Facades {
         }
         
         /**
-         * Create a new redirect response to a controller action.
+         * Create a new redirect response to a controller.stub action.
          *
          * @param string $action
          * @param array $parameters
@@ -11267,7 +11267,7 @@ namespace Illuminate\Support\Facades {
         }
         
         /**
-         * Get the URL to a controller action.
+         * Get the URL to a controller.stub action.
          *
          * @param string $action
          * @param mixed $parameters
@@ -11473,7 +11473,7 @@ namespace Illuminate\Support\Facades {
         }
         
         /**
-         * Set the root controller namespace.
+         * Set the root controller.stub namespace.
          *
          * @param string $rootNamespace
          * @return $this 

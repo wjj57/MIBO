@@ -4,7 +4,7 @@ namespace DummyNamespace;
 
 use App\Http\Validations\IndexValidation;
 
-class DummyAction extends BaseAction
+class DummyClass extends BaseAction
 {
 
     protected $validation = null;

@@ -11,33 +11,15 @@ class MakeAction extends GeneratorCommand
      *
      * @var string
      */
-    protected $signature = 'lvsi:makeAction {action} ';
+    protected $signature = 'lvsi:makeAction {name}';
+
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Command description';
-
-
-    /**
-     * The type of class being generated.
-     *
-     * @var string
-     */
-    protected $type = 'Action';
-    
-
-    /**
-     * Execute the console command.
-     *
-     * @return mixed
-     */
-    public function handle()
-    {
-        //
-    }
+    protected $description = '创建 Action 层';
 
 
     /**
@@ -47,7 +29,7 @@ class MakeAction extends GeneratorCommand
      */
     protected function getStub()
     {
-        return __DIR__ . './stubs/action.stub';
+        return __DIR__ . '/stubs/action.stub';
     }
 
     /**

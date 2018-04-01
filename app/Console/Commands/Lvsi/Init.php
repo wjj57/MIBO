@@ -20,15 +20,6 @@ class Init extends Command
      */
     protected $description = "Init a Laravel App what it had done many things that you don't do";
 
-    /**
-     * Create a new command instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        parent::__construct();
-    }
 
     /**
      * Execute the console command.
@@ -41,8 +32,6 @@ class Init extends Command
         // 生成代码追踪
         passthru('﻿composer require --dev barryvdh/laravel-ide-helper') ;
         $this->call('ide-helper:generate');
-
-
 
 
         return null ;
