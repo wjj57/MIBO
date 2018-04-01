@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: qingyun
- * Date: 18/3/31
- * Time: 下午11:17
- */
 
 namespace App\Workflow\Actions\Validations;
 
@@ -17,8 +11,16 @@ class CourseOnlineValidation
         MemoryFragmentation::set('workflow.status', 'validation');
     }
 
+    //
+    protected function after()
+    {
+
+
+    }
+
     public function index()
     {
+        $this->before();
 
         $validator = Validator::make(MemoryFragmentation::get('workflow.input.data'), [
 
