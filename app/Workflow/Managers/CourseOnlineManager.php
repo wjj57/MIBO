@@ -15,47 +15,34 @@ use App\Workflow\Managers\Queues\SendSMSQueue;
 class CourseOnlineManager extends BaseManager
 {
 
-    // 要不要将 before 方法 替换成 构造函数 ？
-    protected function before()
-    {
-        MemoryFragmentation::set('workflow.status', 'manager');
-
-    }
-
-
     public function register()
     {
 
-        // 服务1开始处理
-        // 服务1处理结束
-        putIntoQueue( SendEMailQueue::class ) ;
+        $production1 = (new AService())->run();
+        $production2 = (new BService())->run($production1);
+        $production3 = (new CService())->run($production2);
 
-        // 服务2开始处理
-        // 服务2处理结束
-        putIntoQueue( SendSMSQueue::class ) ;
+        // 把一个新任务放到队列中
+        putJobIntoQueue($production3, SendEMailQueue::class);
 
+        $production = $production1 + $production2 + $production3;
 
-        // 服务3开始处理
-        // 服务3处理结束
-        putIntoQueue(  ) ;
-
-
+        Memory::set('workflow.business.data', $production);
     }
 
     public function index()
     {
 
-        // 各个业务互相配合处理
+        $production1 = (new AService())->run();
+        $production2 = (new ZService())->run($production1);
+        $production3 = (new CService())->run($production2);
 
-        // 业务处理
-        (new UploadService())->handle();
+        // 把一个新任务放到队列中
+        putJobIntoQueue($production3, SendEMailQueue::class);
 
-        array_push($data = [], [
+        $production = $production1 + $production2 + $production3;
 
-
-        ]);
-
-        MemoryFragmentation::set('workflow.business.data', $data);
+        Memory::set('workflow.business.data', $production);
     }
 
 

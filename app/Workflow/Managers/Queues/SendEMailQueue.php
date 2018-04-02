@@ -9,7 +9,7 @@
 namespace App\Workflow\Managers\Queues;
 
 
-class SendEMailQueue
+class SendEMailQueue extends Queue
 {
 
     protected function before()

@@ -9,7 +9,27 @@
 namespace App\Workflow\Managers\Queues;
 
 
-class SendSMSQueue
+class SendSMSQueue extends Queue
 {
+
+    protected function before()
+    {
+
+
+    }
+
+
+    protected function after()
+    {
+
+
+    }
+
+    public function handle()
+    {
+
+        $this->before();
+
+    }
 
 }

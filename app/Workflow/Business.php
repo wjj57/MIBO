@@ -14,8 +14,8 @@ class Business
 
     protected function before()
     {
-        MemoryFragmentation::set('workflow.status', 'business');
-        MemoryFragmentation::set('workflow.business.data', null);
+        Memory::set('workflow.status', 'business');
+        Memory::set('workflow.business.data', null);
     }
 
     public function handle(array $dependences)

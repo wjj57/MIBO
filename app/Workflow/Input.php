@@ -14,8 +14,8 @@ class Input
 
     protected function before()
     {
-        MemoryFragmentation::set('workflow.status', 'input');
-        MemoryFragmentation::set('workflow.input.data', (new Request())->all());
+        Memory::set('workflow.status', 'input');
+        Memory::set('workflow.input.data', (new Request())->all());
     }
 
     public function handle(array $dependences)

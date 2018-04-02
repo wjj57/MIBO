@@ -16,14 +16,14 @@ class CourseOnlineFilter
 
     protected function before()
     {
-        MemoryFragmentation::set('workflow.status', 'filter');
+        Memory::set('workflow.status', 'filter');
 
-        $this->data = MemoryFragmentation::get('workflow.output.data');
+        $this->data = Memory::get('workflow.output.data');
     }
 
     protected function after()
     {
-        MemoryFragmentation::set('workflow.output.data', $this->data);
+        Memory::set('workflow.output.data', $this->data);
     }
 
     public function index()

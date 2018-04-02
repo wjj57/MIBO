@@ -9,9 +9,9 @@ class Output
 
     protected function before()
     {
-        MemoryFragmentation::set('workflow.status','output');
+        Memory::set('workflow.status','output');
 
-        MemoryFragmentation::set('workflow.output.data', MemoryFragmentation::pull('workflow.business.data'));
+        Memory::set('workflow.output.data', Memory::pull('workflow.business.data'));
     }
 
     public function handle(array $dependences)
@@ -30,7 +30,7 @@ class Output
     protected function after()
     {
 
-        return json_encode(MemoryFragmentation::get('workflow.output.data'), 0);
+        return json_encode(Memory::get('workflow.output.data'), 0);
     }
 
 

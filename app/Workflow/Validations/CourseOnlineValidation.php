@@ -8,7 +8,7 @@ class CourseOnlineValidation
 
     protected function before()
     {
-        MemoryFragmentation::set('workflow.status', 'validation');
+        Memory::set('workflow.status', 'validation');
     }
 
     //
@@ -22,7 +22,7 @@ class CourseOnlineValidation
     {
         $this->before();
 
-        $validator = Validator::make(MemoryFragmentation::get('workflow.input.data'), [
+        $validator = Validator::make(Memory::get('workflow.input.data'), [
 
             'name' => []
         ]);

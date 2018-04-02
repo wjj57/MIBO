@@ -9,7 +9,7 @@
 namespace App\Workflow;
 
 
-class MemoryFragmentation
+class Memory
 {
 
 

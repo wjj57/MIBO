@@ -14,7 +14,7 @@ class UploadVideoService
 
     protected function before()
     {
-        MemoryFragmentation::set('workflow.status', UploadVideoService::class);
+        Memory::set('workflow.status', UploadVideoService::class);
     }
 
     public function handle()
@@ -31,6 +31,6 @@ class UploadVideoService
         ];
 
         // 上传成功后 , 会存入相关的数据
-        MemoryFragmentation::set('workflow.business.data.UploadVideoService', $data);
+        Memory::set('workflow.business.data.UploadVideoService', $data);
     }
 }
