@@ -8,27 +8,27 @@
 
 namespace App\Workflow\Managers\Queues;
 
-
+// 发送短信队列 -> 对应的任务表是 sms_jobs ( 短信任务 )
 class SendSMSQueue extends Queue
 {
 
-    protected function before()
+    // 队列推入一条新任务
+    public function push($job)
     {
 
 
     }
 
-
-    protected function after()
+    // 队列推出一条任务
+    public function pop($job)
     {
 
 
     }
 
+    // 队列开始工作
     public function handle()
     {
-
-        $this->before();
 
     }
 

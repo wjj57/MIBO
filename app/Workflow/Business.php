@@ -18,6 +18,11 @@ class Business
         Memory::set('workflow.business.data', null);
     }
 
+    protected function after()
+    {
+
+    }
+
     public function handle(array $dependences)
     {
         // 运行前需要先执行的操作
@@ -31,9 +36,6 @@ class Business
         $this->after();
     }
 
-    protected function after()
-    {
 
-    }
 
 }

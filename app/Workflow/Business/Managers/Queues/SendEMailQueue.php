@@ -9,25 +9,12 @@
 namespace App\Workflow\Managers\Queues;
 
 
+// 发送邮件队列 -> 对应的任务表是 email_jobs ( 邮件任务 )
 class SendEMailQueue extends Queue
 {
 
-    protected function before()
-    {
-
-
-    }
-
-    protected function after()
-    {
-
-
-    }
-
     public function handle()
     {
-
-        $this->before();
 
     }
 

@@ -16,5 +16,6 @@ Route::get('/', function () {
 });
 
 
-Route::get('/test', 'Test\TestController@test');
+Route::get('/test', 'TestController@test');
+
 

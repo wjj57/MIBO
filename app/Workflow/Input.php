@@ -18,11 +18,18 @@ class Input
         Memory::set('workflow.input.data', (new Request())->all());
     }
 
+    protected function after()
+    {
+
+
+    }
+
     public function handle(array $dependences)
     {
         // 运行前需要先执行的操作
         $this->before();
 
+        // 循环执行依赖操作
         foreach ($dependences as $dependence => $method) {
 
             new $dependence() -> $method();
@@ -31,9 +38,4 @@ class Input
         $this->after();
     }
 
-    protected function after()
-    {
-
-
-    }
 }

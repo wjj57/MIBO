@@ -9,7 +9,7 @@
 namespace App\Workflow\Filters;
 
 
-class CourseOnlineFilter
+class CourseOnlineFilter extends BaseFilter
 {
 
     protected $data;

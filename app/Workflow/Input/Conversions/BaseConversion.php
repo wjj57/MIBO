@@ -2,25 +2,27 @@
 /**
  * Created by PhpStorm.
  * User: qingyun
- * Date: 18/4/1
- * Time: 上午1:09
+ * Date: 18/4/2
+ * Time: 下午10:49
  */
 
-namespace App\Workflow\Managers;
+namespace App\Workflow\Input\Conversion;
 
 
-class BaseManager
+class BaseConversion
 {
 
     function __construct()
     {
+
         $this->before();
     }
 
-    // 要不要将 before 方法 替换成 构造函数 ？
     protected function before()
     {
-        Memory::set('workflow.status', 'manager');
+
+        Memory::set('workflow.status','conversion') ;
+
     }
 
     protected function after()
@@ -28,5 +30,8 @@ class BaseManager
 
 
     }
+
+
+
 
 }
