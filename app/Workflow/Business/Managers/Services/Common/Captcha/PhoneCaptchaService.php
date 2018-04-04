@@ -45,10 +45,11 @@ class PhoneCaptchaService extends BaseService
     }
 
     // 验证验证码是否正确
-    protected function processCheck()
+    protected function processCheck($phone , $captcha)
     {
 
-
+        // 根据 phone 从 redis 中读取 captcha 并与 $captcha 对比
+        return true ; // return false
     }
 
 

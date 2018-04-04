@@ -13,6 +13,7 @@ class CourseOnlineLogic extends BaseLogic
 {
 
 
+    // 逻辑 : 要求必须有输入产量和输出产量
     public static function pay($step, $production)
     {
         switch ($step) {
@@ -21,6 +22,9 @@ class CourseOnlineLogic extends BaseLogic
 
                 if ($production['sad'] = $production['sad']) {
 
+
+                }
+                else{
 
                 }
 
