@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Workflow\Input\Conversion\BaseConversion;
 use App\Workflow\Input\Conversion\CourseOnlineConversion;
 use Illuminate\Http\Request;
 
@@ -15,7 +16,8 @@ class CourseOnlineController extends Controller
         $input->handle([
 
             CourseOnlineValidation::class => 'index',
-            CourseOnlineConversion::class => 'index'
+
+            CourseOnlineConversion::class => ['index']
 
         ]);
 
@@ -58,7 +60,7 @@ class CourseOnlineController extends Controller
         $output->handle([
 
             CourseOnlineFilter::class => 'pay'
-        ]) ;
+        ]);
 
     }
 

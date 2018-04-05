@@ -11,8 +11,12 @@ class TestController extends Controller
 {
 
 
-    public function test()
+    public function test(Request $request)
     {
+
+        var_dump($request->input('id'));
+
+        return ;
 
         echo 'wait' ;
 

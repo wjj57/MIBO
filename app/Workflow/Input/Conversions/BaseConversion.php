@@ -12,17 +12,24 @@ namespace App\Workflow\Input\Conversion;
 class BaseConversion
 {
 
+    protected static $inputData = null;
+
     function __construct()
     {
 
         $this->before();
     }
 
+
     protected function before()
     {
 
-        Memory::set('workflow.status','conversion') ;
+        Memory::set('workflow.status', 'conversion');
 
+        if (is_null(self::$inputData)) {
+
+            self::$inputData = Memory::get('workflow.input.data');
+        }
     }
 
     protected function after()
@@ -32,6 +39,11 @@ class BaseConversion
     }
 
 
+    protected static function convert($inputData)
+    {
+
+
+    }
 
 
 }

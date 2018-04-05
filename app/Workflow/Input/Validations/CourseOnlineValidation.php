@@ -9,32 +9,19 @@ class CourseOnlineValidation extends BaseValidation
 
     public function pay()
     {
+        slef::validatorMayEmitException(Validator::make(self::$inputData, [
 
-        $validator = Validator::make(Memory::get('workflow.input.data'), [
-
-            'name' => []
-        ]);
-
-        if ($validator->fails()) {
-
-            return throw new Exception();
-        }
-
+            'name' => [ 'required' , '' ]
+        ]));
     }
 
     public function index()
     {
-
-        $validator = Validator::make(Memory::get('workflow.input.data'), [
+        self::validatorMayEmitException(Validator::make(self::$inputData, [
 
             'name' => []
-        ]);
 
-        if ($validator->fails()) {
-
-            return throw new Exception();
-        }
-
+        ]));
     }
 
 }

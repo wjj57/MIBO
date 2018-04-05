@@ -1,5 +1,12 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: Lvsi-China
+ * Date: 18/4/5
+ * Time: 下午2:41
+ */
 
+// 辅助函数 : 队列操作
 
 if (!function_exists('putIntoQueue')) {
 
@@ -10,5 +17,4 @@ if (!function_exists('putIntoQueue')) {
         (new $queue)->push($job) ;
     }
 }
-
 
