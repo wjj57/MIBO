@@ -2,18 +2,14 @@
 
 namespace App\Workflow\Actions\Validations;
 
+use App\Workflow\Memory;
+
+
 
 class BaseValidation
 {
 
     protected static $inputData = null;
-
-    function __construct()
-    {
-
-
-        $this->before();
-    }
 
     protected function before()
     {
@@ -23,18 +19,28 @@ class BaseValidation
 
             self::$inputData = Memory::get('workflow.input.data');
         }
-
     }
 
     protected function after()
     {
-
-
+        unset(self::$inputData);
     }
 
-    protected static function validatorMayEmitException()
+    function __construct()
+    {
+        $this->before();
+    }
+
+
+    protected static function failedMayEmitException($validator)
     {
 
+        if($validator->fails()){
+
+            return responseJsonOfFailure([],4444,'','validation') ;
+        }
+
+        return 0;
     }
 
 

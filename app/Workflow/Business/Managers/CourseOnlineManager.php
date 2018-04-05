@@ -9,10 +9,10 @@
 namespace App\Workflow\Managers;
 
 
+use App\Workflow\Business\Managers\BaseManager;
 use App\Workflow\Business\Managers\Services\CourseOnlineService;
 use App\Workflow\Managers\Logics\CourseOnlineLogic;
 use App\Workflow\Managers\Queues\SendEMailQueue;
-use App\Workflow\Managers\Queues\SendSMSQueue;
 use App\Workflow\Memory;
 
 class CourseOnlineManager extends BaseManager
@@ -23,11 +23,9 @@ class CourseOnlineManager extends BaseManager
     public function login()
     {
 
-        $data = self::$inputData;
-
+        $data = self::$businessData;
 
         CourseOnlineService::run($production2, 'processXXXX');
-
     }
 
     public function register()

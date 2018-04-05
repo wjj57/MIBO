@@ -14,7 +14,11 @@ class BaseFilter
     protected function before()
     {
         Memory::set('workflow.status', 'filter');
-        self::$outputData = Memory::get('workflow.output.data');
+
+        if (is_null(self::$outputData)) {
+
+            self::$outputData = Memory::get('workflow.output.data');
+        }
     }
 
     protected function after()

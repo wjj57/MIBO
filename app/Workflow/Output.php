@@ -20,19 +20,11 @@ class Output
     protected function after()
     {
 
-        return responseJsonOfSuccess(
-
-            Memory::get('workflow.output.data'),
-            0,
-            '成功',
-            'Output',
-            200
-        );
     }
 
     public function handle(array $dependences)
     {
-        // 运行前需要先执行的操作
+        // 前置操作
         $this->before();
 
         foreach ($dependences as $dependence => $method) {
@@ -53,7 +45,18 @@ class Output
             return $class->$method();
         }
 
-        return $this->after();
+        // 后置操作
+        $this->after();
+
+        // 成功响应
+        return responseJsonOfSuccess(
+
+            Memory::get('workflow.output.data'),
+            0,
+            '成功',
+            'Output',
+            200
+        );
     }
 
 

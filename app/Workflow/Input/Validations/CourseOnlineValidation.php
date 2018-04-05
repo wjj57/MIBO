@@ -2,14 +2,14 @@
 
 namespace App\Workflow\Actions\Validations;
 
+use Validator;
 
 class CourseOnlineValidation extends BaseValidation
 {
 
-
     public function pay()
     {
-        slef::validatorMayEmitException(Validator::make(self::$inputData, [
+        self::failedMayEmitException(Validator::make(self::$inputData, [
 
             'name' => [ 'required' , '' ]
         ]));
@@ -17,7 +17,7 @@ class CourseOnlineValidation extends BaseValidation
 
     public function index()
     {
-        self::validatorMayEmitException(Validator::make(self::$inputData, [
+        self::failedMayEmitException(Validator::make(self::$inputData, [
 
             'name' => []
 

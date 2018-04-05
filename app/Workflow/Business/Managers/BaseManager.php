@@ -6,31 +6,34 @@
  * Time: 上午1:09
  */
 
-namespace App\Workflow\Managers;
+namespace App\Workflow\Business\Managers;
 
+use App\Workflow\Memory;
 
 class BaseManager
 {
 
-    protected static $inputData = null;
-
-    function __construct()
-    {
-        $this->before();
-    }
+    protected static $businessData = null;
 
     // 要不要将 before 方法 替换成 构造函数 ？
     protected function before()
     {
         Memory::set('workflow.status', 'manager');
 
-        self::$inputData=Memory::get('workflow.input.data');
+        if (is_null(self::$businessData)) {
+
+            self::$businessData = Memory::get('workflow.business.data');
+        }
     }
 
     protected function after()
     {
 
+    }
 
+    function __construct()
+    {
+        $this->before();
     }
 
 

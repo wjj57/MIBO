@@ -19,12 +19,12 @@ class Business
 
     protected function after()
     {
-
+        Memory::move('workflow.business.data', 'workflow.output.data');
     }
 
     public function handle(array $dependences)
     {
-        // 运行前需要先执行的操作
+        // 前置操作
         $this->before();
 
         foreach ($dependences as $dependence => $method) {
@@ -45,11 +45,11 @@ class Business
             return $class->$method();
         }
 
-        // $this->after();
+        // 后置操作
+        $this->after();
 
-        return 0 ;
+        return 0;
     }
-
 
 
 }

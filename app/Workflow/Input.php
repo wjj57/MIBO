@@ -26,13 +26,12 @@ class Input
 
     protected function after()
     {
-
-
+        Memory::move('workflow.input.data','workflow.business.data') ;
     }
 
     public function handle(array $dependences)
     {
-        // 运行前需要先执行的操作
+        // 前置操作
         $this->before();
 
         // 循环执行依赖操作
@@ -54,7 +53,8 @@ class Input
             return $class->$method();
         }
 
-        // $this->after();
+        // 后置操作
+        $this->after();
 
         return 0;
     }
