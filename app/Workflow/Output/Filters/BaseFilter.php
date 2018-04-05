@@ -1,15 +1,40 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: qingyun
- * Date: 18/4/2
- * Time: 下午10:55
- */
 
-namespace App\Workflow\Filters;
 
+namespace App\Workflow\Output\Filters;
+
+
+use App\Workflow\Memory;
 
 class BaseFilter
 {
+
+    protected static $outputData;
+
+    protected function before()
+    {
+        Memory::set('workflow.status', 'filter');
+        self::$outputData = Memory::get('workflow.output.data');
+    }
+
+    protected function after()
+    {
+        Memory::set('workflow.output.data', self::$outputData);
+        unset(self::$outputData);
+    }
+
+
+    function __construct()
+    {
+        $this->before();
+    }
+
+
+    // 只过滤时间
+    protected function onlyFilterTime()
+    {
+
+
+    }
 
 }

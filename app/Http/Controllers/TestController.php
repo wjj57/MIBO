@@ -14,26 +14,6 @@ class TestController extends Controller
     public function test(Request $request)
     {
 
-        var_dump($request->input('id'));
-
-        return ;
-
-        echo 'wait' ;
-
-        $data = [
-            'id' => '1'
-        ] ;
-        $validator = Validator::make($data,[
-
-            'id' => ['integer']
-        ]);
-
-        if($validator->fails()){
-
-            return '失败' ;
-        }
-
-        return '成功' ;
     }
 
 }

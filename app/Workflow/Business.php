@@ -1,12 +1,8 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: qingyun
- * Date: 18/3/31
- * Time: 下午5:07
- */
 
 namespace App\Workflow;
+
+use ReflectionClass;
 
 
 class Business
@@ -14,8 +10,11 @@ class Business
 
     protected function before()
     {
-        Memory::set('workflow.status', 'business');
-        Memory::set('workflow.business.data', null);
+        Memory::set([
+
+            'workflow.status' => 'business',
+            'workflow.business.data' => []
+        ]);
     }
 
     protected function after()
@@ -30,10 +29,25 @@ class Business
 
         foreach ($dependences as $dependence => $method) {
 
-            new $dependence() -> $method();
+            try {
+
+                $class = new ReflectionClass($dependence);
+                if (!$class->hasMethod($method)) {
+
+                    return responseJsonOfFailure([], 4444, "在 Business 的依赖中 , $dependence 类不存在 $method 方法 ", 'Business', 500);
+                }
+            } catch (\Exception $e) {
+
+                return responseJsonOfFailure([], 4444, "在 Business 的依赖中 , $dependence 类不存在", 'Business', 500);
+            }
+
+            // 执行依赖中的方法
+            return $class->$method();
         }
 
-        $this->after();
+        // $this->after();
+
+        return 0 ;
     }
 
 

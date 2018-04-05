@@ -44,7 +44,7 @@ class ConvertNumericStringsToInt extends TransformsRequest
 
             if (!is_numeric($value)) {
 
-                return responseJsonUnsuccessfully([], 4444, $key . '参数必须是整数');
+                return responseJsonOfFailure([], 4444, $key . '参数必须是整数');
             }
 
             return is_numeric($value) ? intval($value) : $value;

@@ -8,14 +8,20 @@
 
 namespace App\Workflow;
 
+use Illuminate\Http\Request;
+use ReflectionClass;
+
 
 class Input
 {
 
     protected function before()
     {
-        Memory::set('workflow.status', 'input');
-        Memory::set('workflow.input.data', (new Request())->all());
+        Memory::set([
+
+            'workflow.status' => 'input',
+            'workflow.input.data' => (new Request())->all()
+        ]);
     }
 
     protected function after()
@@ -32,16 +38,25 @@ class Input
         // 循环执行依赖操作
         foreach ($dependences as $dependence => $method) {
 
-            // 之所以使用两种方法调用 , 是为了保证最大程度的可用度 , 不能因为是个静态方法就不能被调用了
+            try {
 
-            // 先判断是否是静态方法 , 如果是静态方法则静态调用
-            $dependence::method() ;
+                $class = new ReflectionClass($dependence);
+                if (!$class->hasMethod($method)) {
 
-            // 如果不是静态方法 , 则生成对象并调用此方法
-            new $dependence() -> $method();
+                    return responseJsonOfFailure([], 4444, "在 Input 的依赖中 , $dependence 类不存在 $method 方法 ", 'Input', 500);
+                }
+            } catch (\Exception $e) {
+
+                return responseJsonOfFailure([], 4444, "在 Input 的依赖中 , $dependence 类不存在", 'Input', 500);
+            }
+
+            // 执行依赖中的方法
+            return $class->$method();
         }
 
-        $this->after();
+        // $this->after();
+
+        return 0;
     }
 
 }
