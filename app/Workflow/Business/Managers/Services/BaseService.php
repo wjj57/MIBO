@@ -16,14 +16,13 @@ class BaseService
 
     protected static $instance = null;
 
-    public static function run($production, $method)
+    public static function run($method, ...$production)
     {
         if (is_null(self::$instance)) {
 
             self::$instance = new static();
         }
-
-        return self::$instance->$method();
+        return self::$instance->$method(...$production);
     }
 
 

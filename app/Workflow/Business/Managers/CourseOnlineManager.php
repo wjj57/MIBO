@@ -64,17 +64,7 @@ class CourseOnlineManager extends BaseManager
     public function pay()
     {
 
-        // 第 1 个逻辑部分
-        $production1 = (new AService())->run();
-        $production2 = (new BService())->run();
-        $production3 = (new CService())->run();
-        CourseOnlineService::
-        CourseOnlineLogic::pay(1, $production1);
-
-        $production = CourseOnlineLogic::pay('finally', $production1, $production2, $production3);
-
         Memory::set('workflow.business.data', $production3);
-
     }
 
 }
