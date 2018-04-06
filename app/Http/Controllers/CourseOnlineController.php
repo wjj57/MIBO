@@ -1,10 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Workflow\Input\Conversion\BaseConversion;
-use App\Workflow\Input\Conversion\CourseOnlineConversion;
-use Illuminate\Http\Request;
+use App\Workflow\Actions\Validations\CourseOnlineValidation;
+use App\Workflow\Business;
+use App\Workflow\Input;
+use App\Workflow\Managers\CourseOnlineManager;
+use App\Workflow\Output;
+use App\Workflow\Output\Filters\CourseOnlineFilter;
 
 class CourseOnlineController extends Controller
 {
@@ -16,9 +18,6 @@ class CourseOnlineController extends Controller
         $input->handle([
 
             CourseOnlineValidation::class => 'index',
-
-            CourseOnlineConversion::class => ['index']
-
         ]);
 
         // 业务处理( 想象成黑匣子 | workflow.business.data )
@@ -44,7 +43,6 @@ class CourseOnlineController extends Controller
         $input->handle([
 
             CourseOnlineValidation::class => 'pay',
-            CourseOnlineConversion::class => 'pay'
         ]);
 
 

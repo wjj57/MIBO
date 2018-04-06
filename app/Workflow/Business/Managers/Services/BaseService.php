@@ -16,6 +16,18 @@ class BaseService
 
     protected static $instance = null;
 
+    protected function before()
+    {
+        Memory::set('workflow.status', 'service');
+    }
+
+    function __construct()
+    {
+
+        $this->before();
+    }
+
+    // 业务开始运转
     public static function run($method, ...$production)
     {
         if (is_null(self::$instance)) {
@@ -24,18 +36,5 @@ class BaseService
         }
         return self::$instance->$method(...$production);
     }
-
-
-    function __construct()
-    {
-
-        $this->before();
-    }
-
-    protected function before()
-    {
-        Memory::set('workflow.status', 'service');
-    }
-
 
 }

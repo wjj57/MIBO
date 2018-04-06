@@ -19,7 +19,13 @@ class CourseOnlineService extends BaseService
     {
 
         // 即使不需要返回 , 还是需要显示返回一个 null , 接收处不用变量接收就行
-        return null ;
+        return null;
+    }
+
+
+    protected function processPay($courseId, $userId, $money)
+    {
+
     }
 
 }
