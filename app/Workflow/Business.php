@@ -52,4 +52,17 @@ class Business
     }
 
 
+    protected function startClock()
+    {
+
+
+    }
+
+    protected function stopClockClock()
+    {
+
+
+    }
+
+
 }

@@ -32,7 +32,7 @@ class BaseValidation
     }
 
 
-    protected static function failedMayEmitException($validator)
+    protected static function failedWillEmitException($validator)
     {
 
         if($validator->fails()){

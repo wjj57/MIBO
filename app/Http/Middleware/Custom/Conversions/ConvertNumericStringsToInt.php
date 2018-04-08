@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Middleware\Custom;
+namespace App\Http\Middleware\Custom\Conversions;
 
 use Illuminate\Foundation\Http\Middleware\TransformsRequest;
 

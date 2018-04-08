@@ -17,12 +17,15 @@ class CourseOnlineController extends Controller
         // 输入( workflow.input.data )
         $input->handle([
 
+            // Clock::class => 'startClock' , // 开始计时
             CourseOnlineValidation::class => 'index',
         ]);
 
         // 业务处理( 想象成黑匣子 | workflow.business.data )
         $business->handle([
 
+
+            // Clock::class => 'stopClock' // 停止计时 : 记录下从开始到现在运行的时间
             // 只做业务 , 并且要求业务完全只由它完成
             CourseOnlineManager::class => 'index'
         ]);
@@ -30,6 +33,7 @@ class CourseOnlineController extends Controller
         // 输出( workflow.output.data )
         return $output->handle([
 
+            // Clock::class => 'clearClock' // 清理计时 : 记录下从开始到现在运行的时间 , 并且
             CourseOnlineFilter::class => 'index'
         ]);
     }

@@ -2,7 +2,7 @@
 
 namespace App\Http;
 
-use App\Http\Middleware\Custom\ConvertNumericStringsToInt;
+use App\Http\Middleware\Custom\Conversions\ConvertNumericStringsToInt;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel

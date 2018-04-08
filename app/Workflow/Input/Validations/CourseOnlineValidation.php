@@ -9,20 +9,26 @@ class CourseOnlineValidation extends BaseValidation
 
     public function pay()
     {
-        $message = [];
-        self::failedMayEmitException(Validator::make(self::$inputData, [
+        $message = [
+            'name.required' => '姓名为必填项',
+        ];
+
+        self::failedWillEmitException(Validator::make(self::$inputData, [
 
             'name' => ['required', ''],
-        ],$message));
+
+        ], $message));
     }
 
     public function index()
     {
-        $message = [];
-        self::failedMayEmitException(Validator::make(self::$inputData, [
+        $message = [
+            'name.required' => '姓名为必填项',
+        ];
+        self::failedWillEmitException(Validator::make(self::$inputData, [
 
             'name' => []
-        ],$message));
+        ], $message));
     }
 
 }
