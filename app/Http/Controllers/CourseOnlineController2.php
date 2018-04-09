@@ -5,6 +5,7 @@ use App\Workflow\Actions\Validations\CourseOnlineValidation;
 use App\Workflow\Business;
 use App\Workflow\Input;
 use App\Workflow\Managers\CourseOnlineManager;
+use App\Workflow\Managers\Services\Common\Upload\UploadVideoService;
 use App\Workflow\Output;
 use App\Workflow\Output\Filters\CourseOnlineFilter;
 
@@ -27,12 +28,10 @@ class CourseOnlineController2 extends Controller
 
         $business->handle([
 
-            // 计时和日志
-            Clock::class => 'stopClock',
-            Log::class => 'stopLog',
+            // 先判断是否可以购买
 
+            CourseOnlineService::class => '' ,
 
-            CourseOnlineManager::class => 'index'
         ]);
 
         return $output->handle([
