@@ -36,5 +36,4 @@ class BaseManager
         $this->before();
     }
 
-
 }

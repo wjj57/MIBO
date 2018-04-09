@@ -6,14 +6,17 @@
  * Time: 上午12:01
  */
 
-namespace App\Workflow\Managers\Services\Common\Upload;
+namespace App\WorkflowFoundation\Business\Managers\Services\Upload;
 
+use App\Workflow\Memory;
 
+// 上传视频服务
 class UploadVideoService
 {
 
     protected function before()
     {
+        // 记录当前的 workflow 状态为 UploadVideoService
         Memory::set('workflow.status', UploadVideoService::class);
     }
 
@@ -30,7 +33,5 @@ class UploadVideoService
             ]
         ];
 
-        // 上传成功后 , 会存入相关的数据
-        Memory::set('workflow.business.data.UploadVideoService', $data);
     }
 }
