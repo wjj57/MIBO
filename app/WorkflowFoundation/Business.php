@@ -8,6 +8,7 @@ use ReflectionClass;
 class Business
 {
 
+    // 前置操作
     protected function before()
     {
         Memory::set([
@@ -17,6 +18,7 @@ class Business
         ]);
     }
 
+    // 后置操作
     protected function after()
     {
         Memory::move('workflow.business.data', 'workflow.output.data');
@@ -49,19 +51,6 @@ class Business
         $this->after();
 
         return 0;
-    }
-
-
-    protected function startClock()
-    {
-
-
-    }
-
-    protected function stopClockClock()
-    {
-
-
     }
 
 
