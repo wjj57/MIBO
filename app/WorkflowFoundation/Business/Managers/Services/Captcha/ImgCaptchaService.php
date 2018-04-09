@@ -6,7 +6,7 @@
  * Time: 上午10:08
  */
 
-namespace App\Workflow\Managers\Services\Common\Captcha;
+namespace App\Workflow\Business\Managers\Foundation\Services\Captcha;
 
 
 class ImgCaptchaService
