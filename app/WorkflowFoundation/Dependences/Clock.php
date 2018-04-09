@@ -6,7 +6,7 @@
  * Time: 下午2:50
  */
 
-namespace App\Workflow\Dependences;
+namespace App\WorkflowFoundation\Dependences;
 
 
 class Clock

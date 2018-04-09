@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Workflow\Actions\Validations;
+namespace App\Workflow\Input\Validations;
 
+use App\WorkflowFoundation\Input\Validations\BaseValidation;
 use Validator;
 
 class CourseOnlineValidation extends BaseValidation

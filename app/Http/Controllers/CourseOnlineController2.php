@@ -20,15 +20,11 @@ class CourseOnlineController2 extends Controller
 
             // 二者的顺序也是有影响的
             Clock::class => 'startClock',
-            Log::class => 'startLog',
-
 
             CourseOnlineValidation::class => 'index',
         ]);
 
         $business->handle([
-
-            // 先判断是否可以购买
 
             CourseOnlineService::class => '' ,
 
@@ -38,7 +34,6 @@ class CourseOnlineController2 extends Controller
 
             // 计时和日志
             Clock::class => 'clearClock',
-            Log::class => 'clearLog',
 
             CourseOnlineFilter::class => 'index'
         ]);

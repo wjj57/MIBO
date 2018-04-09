@@ -6,7 +6,7 @@
  * Time: 下午11:01
  */
 
-namespace App\Workflow\Business\Managers\Foundation\Repositories;
+namespace App\WorkflowFoundation\Business\Managers\Repositories;
 
 
 class BaseRepository

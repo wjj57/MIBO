@@ -6,9 +6,7 @@
  * Time: 下午8:51
  */
 
-namespace App\Workflow\Managers\Queues;
-
-use App\Workflow\Business\Managers\Foundation\Queues\BaseQueue;
+namespace App\WorkflowFoundation\Business\Managers\Queues;
 
 
 // 发送短信队列 -> 对应的任务表是 sms_jobs ( 短信任务 )

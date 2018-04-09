@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Workflow\Actions\Validations;
+namespace App\WorkflowFoundation\Input\Validations;
 
 use App\Workflow\Memory;
 

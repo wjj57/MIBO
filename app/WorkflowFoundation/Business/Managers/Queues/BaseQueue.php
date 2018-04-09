@@ -6,14 +6,15 @@
  * Time: 下午11:50
  */
 
-namespace App\Workflow\Business\Managers\Foundation\Queues;
+namespace App\WorkflowFoundation\Business\Managers\Queues;
 
 
 class BaseQueue
 {
 
-    public static function run()
+    public function run()
     {
+
     }
 
     // 队列推入一条新任务

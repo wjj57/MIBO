@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Workflow\Output\Filters;
+namespace App\WorkflowFoundation\Output\Filters;
 
 
 use App\Workflow\Memory;

@@ -6,9 +6,7 @@
  * Time: 下午8:51
  */
 
-namespace App\Workflow\Managers\Queues;
-
-use App\Workflow\Business\Managers\Foundation\Queues\BaseQueue;
+namespace App\WorkflowFoundation\Business\Managers\Queues;
 
 
 // 发送邮件队列 -> 对应的任务表是 email_jobs ( 邮件任务 )

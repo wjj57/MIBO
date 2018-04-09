@@ -6,7 +6,7 @@
  * Time: 上午12:05
  */
 
-namespace App\Workflow\Business\Managers\Foundation\Services;
+namespace App\WorkflowFoundation\Business\Managers\Services;
 
 
 use App\Workflow\Memory;
