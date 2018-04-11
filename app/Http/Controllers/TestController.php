@@ -9,9 +9,8 @@ class TestController extends Controller
     {
 
         try {
-            $redis = new \Predis\Client(
-                config('database.redis.default')
-            );
+
+            $redis = new \Predis\Client();
 
             return $redis->config('GET', 'requirepass');
 
