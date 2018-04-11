@@ -2,16 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
-
 class TestController extends Controller
 {
 
-
-    public function test(Request $request)
+    public function test()
     {
 
+        try {
+            $redis = new \Predis\Client(
+                config('database.redis.default')
+            );
+
+            return $redis->config('GET', 'requirepass');
+
+        } catch (\Throwable $e) {
+
+            return $e->getMessage();
+        }
     }
 
 }
+

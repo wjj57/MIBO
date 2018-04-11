@@ -3,6 +3,7 @@
 namespace App\Workflow;
 
 use ReflectionClass;
+use ReflectionMethod;
 
 
 class Business
@@ -12,39 +13,46 @@ class Business
     protected function before()
     {
         Memory::set([
-
             'workflow.status' => 'business',
-            'workflow.business.data' => []
         ]);
+
+        Memory::move('workflow.input.data','workflow.business.data') ;
     }
 
     // 后置操作
     protected function after()
     {
-        Memory::move('workflow.business.data', 'workflow.output.data');
+
     }
 
+    // 处理
     public function handle(array $dependences)
     {
         // 前置操作
         $this->before();
 
+        // 循环传来的依赖数组( 依赖名 => 方法名 )
         foreach ($dependences as $dependence => $method) {
 
-            try {
+            // 实参数组 ( 调用依赖的方法时需要传递的参数 )
+            $actualParameterArr = [];
+            foreach ((new ReflectionMethod($dependence, $method))->getParameters() as $parameter) {
 
-                $class = new ReflectionClass($dependence);
-                if (!$class->hasMethod($method)) {
+                // 依次获取此方法的参数类型
+                if (is_null($type = $parameter->getType()) && $parameter->getName() === 'businessData') {
 
-                    return responseJsonOfFailure([], 4444, "在 Business 的依赖中 , $dependence 类不存在 $method 方法 ", 'Business', 500);
+                    $actualParameterArr[] = Memory::get('workflow.business.data');
+                    continue;
                 }
-            } catch (\Exception $e) {
-
-                return responseJsonOfFailure([], 4444, "在 Business 的依赖中 , $dependence 类不存在", 'Business', 500);
+                if (is_null($type)) {
+                    continue;
+                }
+                $type = strval($type);
+                $actualParameterArr[] = new $type();
             }
 
             // 执行依赖中的方法
-            return $class->$method();
+            return call_user_func($dependence . '::' . $method, ...$actualParameterArr);
         }
 
         // 后置操作

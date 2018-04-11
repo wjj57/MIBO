@@ -11,15 +11,10 @@ use App\WorkflowFoundation\Business\Managers\Services\Upload\UploadVideoService;
 class CourseOnlineManager extends BaseManager
 {
 
-    public function index($businessData, UploadVideoService $uploadVideoService , ExcelService $excelService )
+    public function index($businessData, UploadVideoService $uploadVideoService, ExcelService $excelService)
     {
 
 
-    }
-
-    public function pay()
-    {
-        Memory::set('workflow.business.data', $res);
     }
 
 }

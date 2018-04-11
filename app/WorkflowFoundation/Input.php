@@ -26,7 +26,7 @@ class Input
 
     protected function after()
     {
-        Memory::move('workflow.input.data','workflow.business.data') ;
+
     }
 
     public function handle(array $dependences)

@@ -11,10 +11,10 @@ class Output
     protected function before()
     {
         Memory::set([
-
             'workflow.status' => 'output',
-            'workflow.output.data' => Memory::pull('workflow.business.data')
         ]);
+
+        Memory::move('workflow.business.data', 'workflow.output.data');
     }
 
     protected function after()

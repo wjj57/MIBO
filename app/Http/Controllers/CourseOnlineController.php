@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Controllers\Foundation\BaseController;
 use App\Workflow\Business;
 use App\Workflow\Business\Managers\CourseOnlineManager;
 use App\Workflow\Input;
@@ -8,8 +9,14 @@ use App\Workflow\Input\Validations\CourseOnlineValidation;
 use App\Workflow\Output;
 use App\Workflow\Output\Filters\CourseOnlineFilter;
 
-class CourseOnlineController extends Controller
+class CourseOnlineController extends BaseController
 {
+
+    function __construct()
+    {
+
+    }
+
 
     public function index(Input $input, Business $business, Output $output)
     {
