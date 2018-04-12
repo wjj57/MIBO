@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Workflow\Business\Managers;
+namespace App\Workflow\Business\Directors;
 
 use App\Workflow\Memory;
 use App\WorkflowFoundation\Business\Managers\BaseManager;

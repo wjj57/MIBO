@@ -6,7 +6,7 @@
  * Time: 下午11:50
  */
 
-namespace App\WorkflowFoundation\Business\Managers\Queues;
+namespace App\WorkflowFoundation\Business\Directors\Queues;
 
 
 class BaseQueue

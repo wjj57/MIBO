@@ -6,7 +6,7 @@
  * Time: 上午11:40
  */
 
-namespace App\Workflow\Business\Managers\Repositories;
+namespace App\Workflow\Business\Director\Repositories;
 
 
 class CourseOnlineRepository

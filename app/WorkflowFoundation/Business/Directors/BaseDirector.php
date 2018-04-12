@@ -6,11 +6,11 @@
  * Time: 上午1:09
  */
 
-namespace App\WorkflowFoundation\Business\Managers;
+namespace App\WorkflowFoundation\Business\Directors;
 
 use App\Workflow\Memory;
 
-class BaseManager
+class BaseDirector
 {
 
     protected static $businessData = null;
