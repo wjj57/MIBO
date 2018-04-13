@@ -1,13 +1,7 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: qingyun
- * Date: 18/4/3
- * Time: 上午12:05
- */
 
-namespace App\WorkflowFoundation\Business\Directors\Services;
 
+namespace App\WorkflowFoundation\Business\Directors;
 
 use App\Workflow\Memory;
 
