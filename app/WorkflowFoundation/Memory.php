@@ -23,6 +23,13 @@ class Memory
         self::$data[$key] = $value;
     }
 
+    // 更新数据
+    public static function update($key = null, $value = null)
+    {
+
+        self::set($key, $value);
+    }
+
     // 获取数据
     public static function get($key = null)
     {
@@ -42,7 +49,6 @@ class Memory
 
         return $value;
     }
-
 
     // 移动数据
     public static function move($from, $to)

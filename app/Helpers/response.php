@@ -1,14 +1,9 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Lvsi-China
- * Date: 18/4/5
- * Time: 下午2:23
- */
+
 
 // 辅助函数 : 响应
 
-use App\Workflow\Memory;
+use App\WorkflowFoundation\Memory;
 
 if (!function_exists('responseJsonOfSuccess')) {
 
