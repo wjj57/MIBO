@@ -27,6 +27,12 @@ class BaseService
         $this->before();
     }
 
+    function __call($name, $arguments)
+    {
+
+    }
+
+
     // 业务开始运转
     public static function run($method, ...$production)
     {

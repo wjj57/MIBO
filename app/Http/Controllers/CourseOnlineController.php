@@ -14,7 +14,7 @@ class CourseOnlineController extends BaseController
 
     function __construct()
     {
-
+        // 需要的中间件
     }
 
 
