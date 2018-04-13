@@ -51,9 +51,18 @@ class Memory
     }
 
     // 移动数据
+    // 参数可以为 : move(['from'=>'to']) 或者 move($from, $to)
     public static function move($from, $to)
     {
 
+        if (is_array($from)) {
+
+            foreach ($from as $key => $value) {
+
+                self::$data[$to] = self::pull($from);
+            }
+            return;
+        }
         self::$data[$to] = self::pull($from);
     }
 

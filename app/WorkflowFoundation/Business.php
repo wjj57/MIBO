@@ -17,8 +17,9 @@ class Business
             'workflow.status' => 'business',
         ]);
 
-        // 把 workflow.input.data 中的数据移到 workflow.business.data 中
-        Memory::move('workflow.input.data','workflow.business.data') ;
+        // 把 workflow.input.data 中的数据移到 workflow.business.data.input 中
+        Memory::move('workflow.input.data','workflow.business.data.input') ;
+
     }
 
     // 后置操作

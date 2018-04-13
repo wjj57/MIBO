@@ -1,14 +1,7 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: qingyun
- * Date: 18/4/1
- * Time: 上午1:09
- */
 
 namespace App\WorkflowFoundation\Business\Directors;
-
-use App\Workflow\Memory;
+use App\WorkflowFoundation\Memory;
 
 
 /**
@@ -19,6 +12,8 @@ use App\Workflow\Memory;
 class BaseDirector
 {
 
+    // 当前 Input 中的数据
+    protected static $inputData = null;
     protected static $businessData = null;
 
     // 要不要将 before 方法 替换成 构造函数 ？
