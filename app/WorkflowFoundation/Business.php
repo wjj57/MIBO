@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Workflow;
+namespace App\WorkflowFoundation;
 
-use ReflectionClass;
 use ReflectionMethod;
 
 
@@ -13,9 +12,12 @@ class Business
     protected function before()
     {
         Memory::set([
+
+            // 记录当前的 workflow 状态为 Business
             'workflow.status' => 'business',
         ]);
 
+        // 把 workflow.input.data 中的数据移到 workflow.business.data 中
         Memory::move('workflow.input.data','workflow.business.data') ;
     }
 

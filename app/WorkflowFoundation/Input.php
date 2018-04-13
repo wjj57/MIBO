@@ -1,12 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: qingyun
- * Date: 18/3/31
- * Time: 下午5:06
- */
 
-namespace App\Workflow;
+namespace App\WorkflowFoundation;
 
 use Illuminate\Http\Request;
 use ReflectionClass;
@@ -15,20 +9,26 @@ use ReflectionClass;
 class Input
 {
 
+    // 前置操作
     protected function before()
     {
         Memory::set([
 
+            // 记录当前的 workflow 状态为 input
             'workflow.status' => 'input',
+
+            // 存储当前的 workflow 的数据
             'workflow.input.data' => (new Request())->all()
         ]);
     }
 
+    // 后置操作
     protected function after()
     {
 
     }
 
+    // 处理
     public function handle(array $dependences)
     {
         // 前置操作
@@ -52,6 +52,7 @@ class Input
             // 执行依赖中的方法
             return $class->$method();
         }
+
 
         // 后置操作
         $this->after();

@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Workflow;
-
+namespace App\WorkflowFoundation;
 
 use ReflectionClass;
 
 class Output
 {
 
+    // 前置操作
     protected function before()
     {
         Memory::set([
@@ -17,11 +17,13 @@ class Output
         Memory::move('workflow.business.data', 'workflow.output.data');
     }
 
+    // 后置操作
     protected function after()
     {
 
     }
 
+    // 处理
     public function handle(array $dependences)
     {
         // 前置操作
