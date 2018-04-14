@@ -3,16 +3,19 @@
  * Created by PhpStorm.
  * User: qingyun
  * Date: 18/4/1
- * Time: 下午8:51
+ * Time: 下午11:50
  */
 
-namespace App\WorkflowFoundation\Business\Directors\Queues;
+namespace App\WorkflowFoundation\Shared\Queues;
 
 
-// 发送短信队列 -> 对应的任务表是 sms_jobs ( 短信任务 )
-
-class SendSMSQueue extends BaseQueue
+class BaseQueue
 {
+
+    public function run()
+    {
+
+    }
 
     // 队列推入一条新任务
     public function push($job)

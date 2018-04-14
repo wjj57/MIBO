@@ -5,7 +5,12 @@ namespace App\WorkflowFoundation;
 use Illuminate\Http\Request;
 use ReflectionClass;
 
-
+/**
+ * workflow 中的 Input
+ *
+ * Class Input
+ * @package App\WorkflowFoundation
+ */
 class Input
 {
 
@@ -34,8 +39,11 @@ class Input
         // 前置操作
         $this->before();
 
-        // 循环执行依赖操作
+        // 循环执行传来的依赖操作( 依赖名 => 方法名 )
         foreach ($dependences as $dependence => $method) {
+
+            // 实参数组 ( 调用依赖的方法时需要传递的参数 )
+            $actualParameterArr = [];
 
             try {
 

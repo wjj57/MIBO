@@ -30,6 +30,21 @@ if (!function_exists('responseJsonOfFailure')) {
     }
 }
 
+if (!function_exists('responseJsonOfSystemError')) {
+
+    /**
+     * 报告错误到客户端 : 如果当前是 debug 模式 , 则输出 msg 错误信息 , 否则只报告失败
+     */
+    function responseJsonOfSystemError($data = [], $code = 4444, $msg = '失败', $link = '未知环节', $status = 400, array $headers = [], $options = JSON_UNESCAPED_UNICODE)
+    {
+        if (!config('app.debug')) {
+            $msg = '失败';
+        }
+        setExceptionData($data, $code, $msg, $link, $status, $headers, $options);
+        throw new Exception('');
+    }
+}
+
 if (!function_exists('setExceptionData')) {
 
     function setExceptionData($data = [], $code = 4444, $msg = '失败', $link = '未知环节', $status = 400, array $headers = [], $options = JSON_UNESCAPED_UNICODE)

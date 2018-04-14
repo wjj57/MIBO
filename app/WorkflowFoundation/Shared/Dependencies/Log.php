@@ -6,7 +6,7 @@
  * Time: 下午2:54
  */
 
-namespace App\WorkflowFoundation\Dependences;
+namespace App\WorkflowFoundation\Shared\Dependencies;
 
 
 class Log

@@ -4,17 +4,28 @@ namespace App\WorkflowFoundation;
 
 use ReflectionClass;
 
+/**
+ * workflow 中的 Output
+ *
+ * Class Output
+ * @package App\WorkflowFoundation
+ */
 class Output
 {
 
     // 前置操作
     protected function before()
     {
+        // 记录当前的 workflow 状态为 output
         Memory::set([
+
             'workflow.status' => 'output',
         ]);
 
-        Memory::move('workflow.business.data', 'workflow.output.data');
+        // 把 workflow.business.data.portionOfService 中的数据移到 workflow.output.data 中 ,
+        // 并且销毁掉 workflow.business.data.portionOfInput
+        Memory::move('workflow.business.data.portionOfService', 'workflow.output.data');
+        Memory::destroy('workflow.business.data.portionOfInput');
     }
 
     // 后置操作
@@ -56,7 +67,7 @@ class Output
             Memory::get('workflow.output.data'),
             0,
             '成功',
-            'Output',
+            'output',
             200
         );
     }

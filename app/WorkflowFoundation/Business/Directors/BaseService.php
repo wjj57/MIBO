@@ -1,9 +1,9 @@
 <?php
 
-
 namespace App\WorkflowFoundation\Business\Directors;
 
-use App\Workflow\Memory;
+
+use App\WorkflowFoundation\Memory;
 
 class BaseService
 {
