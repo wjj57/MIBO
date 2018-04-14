@@ -2,7 +2,11 @@
 
 namespace App\WorkflowFoundation;
 
+use App\WorkflowFoundation\Shared\Memory\Memory;
+use App\WorkflowFoundation\Shared\Reflection\Reflection;
+use Illuminate\Support\Str;
 use ReflectionMethod;
+
 
 /**
  * workflow 中的 Business
@@ -42,27 +46,14 @@ class Business
         // 前置操作
         $this->before();
 
-        // 循环执行传来的依赖操作( 依赖名 => 方法名 )
+        // 循环执行传来的依赖数组中的操作( [类名 => 方法名] )
         foreach ($dependences as $dependence => $method) {
 
-            // 实参数组 ( 调用依赖的方法时需要传递的参数 )
-            $actualParameterArr = [];
-            foreach ((new ReflectionMethod($dependence, $method))->getParameters() as $parameter) {
+            // 实参数组 ( 调用类的方法时需要传递的参数 )
+            $actualParameterArr = Reflection::forMethodCreateActualParameterArr($dependence, $method);
 
-                // 依次获取此方法的参数类型
-                if (is_null($type = $parameter->getType()) && $parameter->getName() === 'businessData') {
-
-                    $actualParameterArr[] = Memory::get('workflow.business.data');
-                    continue;
-                }
-                if (is_null($type)) {
-                    continue;
-                }
-                $type = strval($type);
-                $actualParameterArr[] = new $type();
-            }
-
-            // 执行依赖中的方法
+            // 执行类的方法
+            return call_user_func([Memory::get(Str::strcat('pool.', $dependence))]);
             return call_user_func($dependence . '::' . $method, ...$actualParameterArr);
         }
 

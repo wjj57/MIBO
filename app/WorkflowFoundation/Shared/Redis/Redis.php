@@ -2,7 +2,6 @@
 
 namespace App\WorkflowFoundation\Shared\Redis;
 
-
 class Redis
 {
 

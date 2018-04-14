@@ -1,9 +1,9 @@
 <?php
 
+use App\WorkflowFoundation\Shared\Memory\Memory;
+
 
 // 辅助函数 : 响应
-
-use App\WorkflowFoundation\Memory;
 
 if (!function_exists('responseJsonOfSuccess')) {
 
@@ -26,7 +26,7 @@ if (!function_exists('responseJsonOfFailure')) {
     function responseJsonOfFailure($data = [], $code = 4444, $msg = '失败', $link = '未知环节', $status = 400, array $headers = [], $options = JSON_UNESCAPED_UNICODE)
     {
         setExceptionData($data, $code, $msg, $link, $status, $headers, $options);
-        throw new Exception('');
+        throw new \Exception('');
     }
 }
 
@@ -41,7 +41,7 @@ if (!function_exists('responseJsonOfSystemError')) {
             $msg = '失败';
         }
         setExceptionData($data, $code, $msg, $link, $status, $headers, $options);
-        throw new Exception('');
+        throw new \Exception('');
     }
 }
 

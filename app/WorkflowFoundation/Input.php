@@ -2,6 +2,7 @@
 
 namespace App\WorkflowFoundation;
 
+use App\WorkflowFoundation\Shared\Memory\Memory;
 use Illuminate\Http\Request;
 use ReflectionClass;
 

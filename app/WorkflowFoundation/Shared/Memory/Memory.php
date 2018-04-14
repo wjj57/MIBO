@@ -2,6 +2,13 @@
 
 namespace App\WorkflowFoundation\Shared\Memory;
 
+/**
+ * 内存( Memory = workflow + pool )
+ * pool : 资源池
+ * workflow : 工作流数据(Input数据 + Business数据 + Output数据)
+ * Class Memory
+ * @package App\WorkflowFoundation\Shared\Memory
+ */
 class Memory
 {
 
@@ -69,7 +76,7 @@ class Memory
     }
 
     /**
-     * 移到数据
+     * 移动数据(将数据从一个地方移动到另一个地方)
      * 参数可以为 : move(['from'=>'to']) 或者 move($from, $to)
      * @param $from array | string
      * @param $to
