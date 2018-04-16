@@ -2,7 +2,9 @@
 
 namespace App\WorkflowFoundation;
 
-use ReflectionClass;
+use App\WorkflowFoundation\Shared\Constants\Constant;
+use App\WorkflowFoundation\Shared\Memory\Memory;
+use App\WorkflowFoundation\Shared\Reflection\Reflection;
 
 /**
  * workflow 中的 Output
@@ -19,13 +21,11 @@ class Output
         // 记录当前的 workflow 状态为 output
         Memory::set([
 
-            'workflow.status' => 'output',
+            Constant::WORKFLOW_STATUS => 'output',
         ]);
 
-        // 把 workflow.business.data.portionOfService 中的数据移到 workflow.output.data 中 ,
-        // 并且销毁掉 workflow.business.data.portionOfInput
-        Memory::move('workflow.business.data.portionOfService', 'workflow.output.data');
-        Memory::destroy('workflow.business.data.portionOfInput');
+        // 把 workflow.business.data 中的数据移到 workflow.output.data 中 ,
+        Memory::move(Constant::WORKFLOW_BUSINESS_DATA, Constant::WORKFLOW_OUTPUT_DATA);
     }
 
     // 后置操作
@@ -40,22 +40,14 @@ class Output
         // 前置操作
         $this->before();
 
+        // 循环执行传来的依赖数组中的操作( [类名 => 方法名] )
         foreach ($dependences as $dependence => $method) {
 
-            try {
-
-                $class = new ReflectionClass($dependence);
-                if (!$class->hasMethod($method)) {
-
-                    return responseJsonOfFailure([], 4444, "在 Output 的依赖中 , $dependence 类不存在 $method 方法 ", 'Output', 500);
-                }
-            } catch (\Exception $e) {
-
-                return responseJsonOfFailure([], 4444, "在 Output 的依赖中 , $dependence 类不存在", 'Output', 500);
-            }
+            // 实参数组 ( 调用类的方法时需要传递的参数 )
+            $actualParameterArr = Reflection::forMethodCreateActualParameterArr($dependence, $method);
 
             // 执行依赖中的方法
-            return $class->$method();
+            return (Memory::get($dependence, 'pool'))->$method(...$actualParameterArr);
         }
 
         // 后置操作
@@ -64,7 +56,7 @@ class Output
         // 成功响应
         return responseJsonOfSuccess(
 
-            Memory::get('workflow.output.data'),
+            Memory::get(Constant::WORKFLOW_OUTPUT_DATA),
             0,
             '成功',
             'output',

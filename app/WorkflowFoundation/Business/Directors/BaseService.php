@@ -2,9 +2,6 @@
 
 namespace App\WorkflowFoundation\Business\Directors;
 
-
-use App\WorkflowFoundation\Memory;
-
 class BaseService
 {
 
@@ -12,20 +9,13 @@ class BaseService
 
     protected function before()
     {
-        Memory::set('workflow.status', 'service');
     }
 
-    function __construct()
+    protected function after()
     {
 
-        $this->before();
-    }
-
-    function __call($name, $arguments)
-    {
 
     }
-
 
     // 业务开始运转
     public static function run($method, ...$production)

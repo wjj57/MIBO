@@ -2,9 +2,10 @@
 
 namespace App\WorkflowFoundation;
 
+use App\WorkflowFoundation\Shared\Constants\Constant;
 use App\WorkflowFoundation\Shared\Memory\Memory;
+use App\WorkflowFoundation\Shared\Reflection\Reflection;
 use Illuminate\Http\Request;
-use ReflectionClass;
 
 /**
  * workflow 中的 Input
@@ -21,10 +22,10 @@ class Input
         Memory::set([
 
             // 记录当前的 workflow 状态为 input
-            'workflow.status' => 'input',
+            Constant::WORKFLOW_STATUS => 'input',
 
             // 存储当前的 workflow 的数据
-            'workflow.input.data' => (new Request())->all()
+            Constant::WORKFLOW_INPUT_DATA => (new Request())->all()
         ]);
     }
 
@@ -35,31 +36,19 @@ class Input
     }
 
     // 处理
-    public function handle(array $dependences)
+    public function handle(array $dependencies)
     {
         // 前置操作
         $this->before();
 
-        // 循环执行传来的依赖操作( 依赖名 => 方法名 )
-        foreach ($dependences as $dependence => $method) {
+        // 循环执行传来的依赖数组中的操作( [类名 => 方法名] )
+        foreach ($dependencies as $dependence => $method) {
 
             // 实参数组 ( 调用依赖的方法时需要传递的参数 )
-            $actualParameterArr = [];
-
-            try {
-
-                $class = new ReflectionClass($dependence);
-                if (!$class->hasMethod($method)) {
-
-                    return responseJsonOfFailure([], 4444, "在 Input 的依赖中 , $dependence 类不存在 $method 方法 ", 'Input', 500);
-                }
-            } catch (\Exception $e) {
-
-                return responseJsonOfFailure([], 4444, "在 Input 的依赖中 , $dependence 类不存在", 'Input', 500);
-            }
+            $actualParameterArr = Reflection::forMethodCreateActualParameterArr($dependence, $method);
 
             // 执行依赖中的方法
-            return $class->$method();
+            return (Memory::get($dependence, 'pool'))->$method(...$actualParameterArr);
         }
 
 

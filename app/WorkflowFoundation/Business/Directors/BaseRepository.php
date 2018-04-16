@@ -18,10 +18,4 @@ class BaseRepository
     {
         $this->model = new static();
     }
-
-    public function __call()
-    {
-
-    }
-
 }

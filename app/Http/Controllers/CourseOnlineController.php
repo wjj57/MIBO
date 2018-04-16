@@ -1,20 +1,23 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Http\Controllers\Foundation\BaseController;
-use App\Workflow\Business;
-use App\Workflow\Business\Managers\CourseOnlineManager;
-use App\Workflow\Input;
+
+use App\Workflow\Business\Directors\CourseOnlineDirector;
 use App\Workflow\Input\Validations\CourseOnlineValidation;
-use App\Workflow\Output;
 use App\Workflow\Output\Filters\CourseOnlineFilter;
+use App\WorkflowFoundation\Business;
+use App\WorkflowFoundation\Input;
+use App\WorkflowFoundation\Output;
 
 class CourseOnlineController extends BaseController
 {
 
     function __construct()
     {
-        // 需要的中间件
+        // 为不同的方法定义不同的中间件
+        $this->middleware('auth');
     }
 
 
@@ -28,7 +31,7 @@ class CourseOnlineController extends BaseController
 
         $business->handle([
 
-            CourseOnlineManager::class => 'index'
+            CourseOnlineDirector::class => 'index'
         ]);
 
         return $output->handle([
@@ -42,31 +45,6 @@ class CourseOnlineController extends BaseController
     // 购买线上课程
     public function pay(Input $input, Business $business, Output $output)
     {
-
-        // 输入
-        $input->handle([
-
-            CourseOnlineValidation::class => 'pay',
-        ]);
-
-
-        // 业务处理
-        $business->handle([
-
-            // 只做业务 , 并且要求业务完全只由它完成
-            CourseOnlineManager::class => 'pay',
-
-        ]);
-
-        // 输出
-        $output->handle([
-
-            CourseOnlineFilter::class => 'pay'
-        ]);
-
-
-
-
         // 输入( workflow.input.data )
         $input->handle([
 
@@ -80,7 +58,7 @@ class CourseOnlineController extends BaseController
 
             // Clock::class => 'stopClock' // 停止计时 : 记录下从开始到现在运行的时间
             // 只做业务 , 并且要求业务完全只由它完成
-            CourseOnlineManager::class => 'index'
+            CourseOnlineDirector::class => 'index'
         ]);
 
         // 输出( workflow.output.data )

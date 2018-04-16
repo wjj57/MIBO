@@ -2,7 +2,9 @@
 
 namespace App\WorkflowFoundation\Shared\Reflection;
 
+use App\WorkflowFoundation\Shared\Constants\Constant;
 use App\WorkflowFoundation\Shared\Memory\Memory;
+use Illuminate\Support\Str;
 use ReflectionMethod;
 
 
@@ -19,17 +21,17 @@ class Reflection
 
             // 输入数据
             case 'inputData' :
-                return Memory::get('workflow.input.data');
+                return Memory::get(Constant::WORKFLOW_INPUT_DATA);
                 break;
 
             // 业务数据
-            case 'serviceData' :
-                return Memory::get('workflow.business.data.portionOfService');
+            case 'businessData' :
+                return Memory::get(Constant::WORKFLOW_BUSINESS_DATA);
                 break;
 
             // 输出数据
             case 'outputData' :
-                return Memory::get('workflow.output.data');
+                return Memory::get(Constant::WORKFLOW_OUTPUT_DATA);
                 break;
 
             default:
@@ -71,15 +73,14 @@ class Reflection
                 $actualParameterArr[] = self::forUnknownTypeCreateActualParameter($name);
             }
 
-            // 判断 type 类型是否存在
-            $type = strval($type);
-            if (!class_exists($type)) {
+            // 判断 type 类型(类)是否存在
+            if (!class_exists($type = strval($type))) {
 
                 return responseJsonOfSystemError([], 4444, $type . '类型不存在,无法创建此类型的对象', 'reflection');
             }
 
-            // 创建 type 类型对象并压入实参数组
-            $actualParameterArr[] = new $type();
+            // 从Memory中的资源池中获取资源并压入实参数组
+            $actualParameterArr[] = Memory::get(Str::strcat('pool.', $type));
         }
 
         return $actualParameterArr;
