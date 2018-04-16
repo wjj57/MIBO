@@ -74,6 +74,7 @@ class Memory
         }
 
         // 根据$key的值知道了get的目的是获取 poll 中的资源
+        // 如果有则返回此资源 , 如果没有此资源则创建并放到 pool 中
         if (is_null($resource = array_get(self::$data, $key, null))) {
 
             // 创建新的资源到pool中

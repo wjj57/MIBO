@@ -11,6 +11,7 @@ use App\WorkflowFoundation\Business;
 use App\WorkflowFoundation\Input;
 use App\WorkflowFoundation\Output;
 
+
 class CourseOnlineController extends BaseController
 {
 
