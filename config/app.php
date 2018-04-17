@@ -151,6 +151,13 @@ return [
          * Package Service Providers...
          */
 
+
+        /*
+         * Define My Providers - Lvsi
+         */
+        App\Providers\Macros\StrMacro::class,
+
+
         /*
          * Application Service Providers...
          */

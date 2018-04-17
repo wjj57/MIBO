@@ -35,7 +35,7 @@ class Reflection
                 break;
 
             default:
-                return responseJsonOfSystemError([], 4444, $name . '是未知类型的形参,无法为它生成实参', 'reflection');
+                return responseJsonOfSystemError([], 4444, Str::strcat($name, '是未知类型的形参,无法为它生成实参'), 'reflection');
                 break;
         }
     }
@@ -48,6 +48,9 @@ class Reflection
      */
     public static function forMethodCreateActualParameterArr($class, $method)
     {
+        Memory::get($class, 'pool');
+        return;
+
         // 先判断类和类中的方法是否存在
         if (!class_exists($class) || !method_exists(new $class(), $method)) {
 

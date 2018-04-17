@@ -30,4 +30,10 @@ class Constant
         self::WORKFLOW_OUTPUT_DATA,
     ];
 
+
+    // Hook 在 Service 执行前 , 执行后才执行业务
+    const HOOK_SERVICE_AT_BEFORE = 'before';
+    const HOOK_SERVICE_AT_AFTER = 'after';
+
+
 }

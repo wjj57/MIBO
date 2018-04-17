@@ -21,7 +21,7 @@ class CourseOnlineDirector
 
             // 返回 true 则可以继续 , 返回 false, 则不再向下执行
             // return true/false ;
-        },false);
+        },true);
 
         $business = $courseOnlineService->run('index');
 

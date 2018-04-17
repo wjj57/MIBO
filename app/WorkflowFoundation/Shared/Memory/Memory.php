@@ -30,7 +30,7 @@ class Memory
             return;
         }
 
-        if (is_string($key) && is_string($value)) {
+        if (is_string($key)) {
 
             array_set(self::$data, $key, $value);
             return;

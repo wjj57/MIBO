@@ -18,13 +18,12 @@ class CourseOnlineController extends BaseController
     function __construct()
     {
         // 为不同的方法定义不同的中间件
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
 
 
     public function index(Input $input, Business $business, Output $output)
     {
-
         $input->handle([
 
             CourseOnlineValidation::class => 'index',
@@ -39,7 +38,6 @@ class CourseOnlineController extends BaseController
 
             CourseOnlineFilter::class => 'index'
         ]);
-
     }
 
 

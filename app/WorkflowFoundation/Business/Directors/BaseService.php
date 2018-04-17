@@ -2,6 +2,7 @@
 
 namespace App\WorkflowFoundation\Business\Directors;
 
+use App\WorkflowFoundation\Shared\Constants\Constant;
 use App\WorkflowFoundation\Shared\Hooks\Hook;
 use App\WorkflowFoundation\Shared\Memory\Memory;
 use Closure;
@@ -23,18 +24,19 @@ class BaseService
     }
 
     // 钩子 , 钩子勾住 $method 方法 , 表示在执行 被调用类 的 $method 方法之前/之后 , 先执行 $callback 回调函数
-    public function hook($method, Closure $callback, $before = true, $immediately = true, ...$arguments)
+    public function hook($method, Closure $callback, $before)
     {
-        $before = $before ? 'before' : 'after';
-        $immediately = $immediately ? 'immediately' : 'notImmediately';
-        Hook::set($callback, [static::class, $method, $before, $immediately]);
-
-        if ($immediately) {
-            return $this->run($method, ...$arguments);
-        }
-
-        return 0;
+        Hook::set($callback, [static::class, $method, $before, 'notImmediately']);
     }
+
+
+    // hook 住 , 并且立即执行
+    public function hookAndRun($method, Closure $callback, $before, ...$arguments)
+    {
+        Hook::set($callback, [static::class, $method, $before, 'immediately']);
+        return $this->run($method, ...$arguments);
+    }
+
 
     // 业务开始运转
     public function run($method, ...$arguments)
@@ -43,27 +45,24 @@ class BaseService
         $this->before();
 
 
-        // -------> 勾住,在此执行
+        // -------> 勾住,在业务执行前执行
         $hook = [static::class, $method, 'before', 'notImmediately'];
-        if (Hook::has($hook)) {
+        if (Hook::has($hook) && !with(null, Hook::get($hook))) {
 
-            $callback = Hook::get($hook);
-            if (!$callback()) {
-
-                return false;
-            }
+            // 如果回调函数返回 false 则将不再向下执行
+            return false;
         }
 
-        // 执行业务(不一定有返回值 , $data肯为null)
+        // 执行业务(不一定有返回值 , $data可能为null)
         $data = $this->$method(...$arguments);
 
 
-        // -------> 勾住,在此执行
+        // -------> 勾住,在业务执行后执行
         $hook[2] = 'after';
         if (Hook::has($hook)) {
 
-            $callback = Hook::get($hook);
-            $callback();
+            // 执行回调函数
+            with(null, Hook::get($hook));
         }
 
 

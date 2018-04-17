@@ -27,4 +27,11 @@ class Hook
     {
         return array_has(self::$hooks, implode('.', $arguments));
     }
+
+    // 销毁掉
+    public static function destroy()
+    {
+        self::$hooks = null;
+        unset(self::$hooks);
+    }
 }

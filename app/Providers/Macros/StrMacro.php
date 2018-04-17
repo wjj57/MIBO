@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers\Macro;
+namespace App\Providers\Macros;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
