@@ -48,11 +48,8 @@ class Reflection
      */
     public static function forMethodCreateActualParameterArr($class, $method)
     {
-        Memory::get($class, 'pool');
-        return;
-
         // 先判断类和类中的方法是否存在
-        if (!class_exists($class) || !method_exists(new $class(), $method)) {
+        if (!class_exists($class) || !method_exists(Memory::get($class, 'pool'), $method)) {
 
             return responseJsonOfSystemError([], 4444, $class . '类不存在或者类中不存在' . $method . '方法');
         }
@@ -70,13 +67,14 @@ class Reflection
             $type = $parameter->getType(); // 参数类型
             $name = $parameter->getName(); // 参数名称
 
-            // 形参的类型未知
+            // 1、形参的类型未知
             if (is_null($type)) {
 
                 $actualParameterArr[] = self::forUnknownTypeCreateActualParameter($name);
+                continue;
             }
 
-            // 判断 type 类型(类)是否存在
+            // 2、形参的类型显示声明了，但是不确定此类型是否存在，需要判断 type 类型(类)是否存在
             if (!class_exists($type = strval($type))) {
 
                 return responseJsonOfSystemError([], 4444, $type . '类型不存在,无法创建此类型的对象', 'reflection');

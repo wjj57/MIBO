@@ -4,6 +4,7 @@ namespace App\WorkflowFoundation\Input\Validations;
 
 use App\WorkflowFoundation\Shared\Constants\Constant;
 use App\WorkflowFoundation\Shared\Memory\Memory;
+use Validator;
 
 /**
  * 验证基类
@@ -32,7 +33,7 @@ class BaseValidation
         if ($validator->fails()) {
 
             // 未通过验证 , 则直接返回JSON并提示错误
-            return responseJsonOfFailure([], 4444, '', 'validation');
+            return responseJsonOfFailure([], 4444, $validator->messages(), 'validation');
         }
 
         return 0;

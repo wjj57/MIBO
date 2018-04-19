@@ -14,11 +14,13 @@ class CourseOnlineValidation extends BaseValidation
     {
         $message = [
 
-            'name.required' => 'name参数为必填项'
+            'name.required' => 'name参数为必填项',
+            'name.email' => 'name参数必须为邮箱',
+            'name.numeric' => 'name参数必须为数字'
         ];
         return Validator::make($inputData, [
 
-            'name' => 'required',
+            'name' => 'required|email|numeric',
             
         ], $message);
     }

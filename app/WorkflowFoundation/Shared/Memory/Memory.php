@@ -106,7 +106,7 @@ class Memory
             // 创建新的资源并放到 pool 中
             $resource = new $class();
             self::set($key, $resource);
-            return new $resource;
+            return $resource;
         }
 
         return responseJsonOfSystemError([], 4444, Str::strcat('Memory暂不支持此格式的键 : ', $key));
