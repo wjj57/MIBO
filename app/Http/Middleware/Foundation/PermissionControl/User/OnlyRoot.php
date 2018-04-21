@@ -1,11 +1,14 @@
 <?php
 
-namespace App\Http\Middleware;
+namespace App\Http\Middleware\Foundation\PermissionControl\User;
 
 use Closure;
 
-class LoginSessionMiddleware
+
+// 权限控制 - 只有 Root 用户才有权限
+class OnlyRoot
 {
+
     /**
      * Handle an incoming request.
      *
@@ -15,10 +18,10 @@ class LoginSessionMiddleware
      */
     public function handle($request, Closure $next)
     {
-
-        // 判断是否有登录状态 , 没有的话 , 则抛出异常
-
+        // 根据当前传来的请求参数 , 判断用户是否是 Root 用户
+        // 只有是Root用户 , 才能继续向下运行
 
         return $next($request);
     }
+
 }
