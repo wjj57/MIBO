@@ -47,7 +47,7 @@ class Output
             $actualParameterArr = Reflection::forMethodCreateActualParameterArr($dependence, $method);
 
             // 执行依赖中的方法
-            return (Memory::get($dependence, 'pool'))->$method(...$actualParameterArr);
+            (Memory::get($dependence, 'pool'))->$method(...$actualParameterArr);
         }
 
         // 后置操作

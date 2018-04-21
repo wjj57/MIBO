@@ -19,6 +19,10 @@ class Kernel extends HttpKernel
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \App\Http\Middleware\TrimStrings::class,
 
+
+        /*
+         * 自己定义的中间件
+         */
         ConvertNumericStringsToInt::class,
 
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
