@@ -2,7 +2,6 @@
 
 namespace App\WorkflowFoundation\Business\Directors;
 
-use App\WorkflowFoundation\Shared\Constants\Constant;
 use App\WorkflowFoundation\Shared\Hooks\Hook;
 use App\WorkflowFoundation\Shared\Memory\Memory;
 use Closure;
@@ -22,6 +21,12 @@ class BaseService
 
 
     }
+
+
+
+
+
+    /*--start-------------非必须使用 , 只是提供此技术以应对有时候奇葩的需求-----------------*/
 
     // 钩子 , 钩子勾住 $method 方法 , 表示在执行 被调用类 的 $method 方法之前/之后 , 先执行 $callback 回调函数
     // 只是提供一个方式而已 , 不是必须选择的
@@ -78,13 +83,16 @@ class BaseService
 
     final public static function __callStatic($name, $arguments)
     {
-        if (in_array($name, ['hook', 'run'])) {
+        if (in_array($name, ['hook', 'run', 'hookAndRun'])) {
 
             return Memory::get(static::class, 'pool')->$name(...$arguments);
         }
 
         return responseJsonOfSystemError([], 4444, Str::strcat('BaseService无法调用', $name, '方法,因为此方法不存在'));
     }
+
+    /*--end-------------非必须使用 , 只是提供此技术以应对有时候奇葩的需求-----------------*/
+
 
 }
 
