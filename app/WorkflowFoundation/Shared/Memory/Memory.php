@@ -18,6 +18,27 @@ class Memory
     // 存储的数据
     protected static $data = null;
 
+    // 是否存在 key ( 如果不存在可以设置数据 )
+    public function has($key, $value = null)
+    {
+        // 如果存在 key , 则直接返回 true
+        if (array_has(self::$data, $key)) {
+
+            return true;
+        }
+
+        // 不存在 key , 且也没有传入 $value , 则直接返回 false
+        if (is_null($value)) {
+
+            return false;
+        }
+
+        // 不存在 key , 但是传入了 $value , 则设置 key:value
+        self::set($key, $value);
+
+        return true;
+    }
+
     // 设置数据
     public static function set($key, $value = null)
     {
@@ -70,7 +91,7 @@ class Memory
         if (in_array($key, Constant::WORKFLOW_THREE_STATES_DATA)) {
 
             // 数据此时肯定已经存在(必须遵守规范 : 只能在可以调用的时候调用 , 那么数据此时肯定已经存在)
-            return array_get(self::$data, $key);
+            return array_get(self::$data, $key, null);
         }
 
         // 根据$key的值知道了get的目的是获取 poll 中的资源
@@ -147,6 +168,34 @@ class Memory
         if (is_string($from) && is_string($to)) {
 
             self::set($to, self::pull($from));
+            return;
+        }
+
+        return;
+    }
+
+    /**
+     * 复制数据 , 将from处的数据copy到to处的数据中
+     * @param $from
+     * @param null $to
+     */
+    public static function copy($from, $to = null)
+    {
+
+        // 只有一个 from 参数 , 并且 from 参数是数组
+        if (is_array($from)) {
+
+            foreach ($from as $from1 => $to1) {
+
+                self::set($to1, self::get($from1));
+            }
+            return;
+        }
+
+        // from参数 和 to参数 都有 , 并且都是字符串
+        if (is_string($from) && is_string($to)) {
+
+            self::set($to, self::get($from));
             return;
         }
 

@@ -156,6 +156,7 @@ return [
          * Define My Providers - Lvsi
          */
         App\Providers\Macros\StrMacro::class,
+        App\Providers\Macros\ArrMacro::class,
 
 
         /*

@@ -8,6 +8,7 @@ namespace App\WorkflowFoundation\Shared\Hooks;
 class Hook
 {
 
+    // 当前的 hooks
     private static $hooks = [];
 
     // 存储 Hook

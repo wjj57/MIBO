@@ -25,7 +25,7 @@ class Input
             Constant::WORKFLOW_STATUS => 'input',
 
             // 存储当前的 workflow 的数据
-            Constant::WORKFLOW_INPUT_DATA => (new Request())->all()
+            Constant::WORKFLOW_INPUT_DATA => app('request')->all()
         ]);
     }
 
@@ -50,7 +50,6 @@ class Input
             // 执行依赖中的方法
             return (Memory::get($dependence, 'pool'))->$method(...$actualParameterArr);
         }
-
 
         // 后置操作
         $this->after();

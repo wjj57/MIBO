@@ -1,12 +1,12 @@
 <?php
 
-
 namespace App\Workflow\Business\Directors;
 
-
 use App\Workflow\Business\Directors\Services\CourseOnlineService;
+use App\WorkflowFoundation\Business\Directors\BaseDirector;
 
-class CourseOnlineDirector
+
+class CourseOnlineDirector extends BaseDirector
 {
 
 

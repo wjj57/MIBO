@@ -81,7 +81,7 @@ class Reflection
             }
 
             // 从Memory中的资源池中获取资源并压入实参数组
-            $actualParameterArr[] = Memory::get(Str::strcat('pool.', $type));
+            $actualParameterArr[] = Memory::get($type, 'pool');
         }
 
         return $actualParameterArr;

@@ -24,14 +24,16 @@ class BaseService
     }
 
     // 钩子 , 钩子勾住 $method 方法 , 表示在执行 被调用类 的 $method 方法之前/之后 , 先执行 $callback 回调函数
-    public function hook($method, Closure $callback, $before)
+    // 只是提供一个方式而已 , 不是必须选择的
+    final public function hook($method, Closure $callback, $before)
     {
         Hook::set($callback, [static::class, $method, $before, 'notImmediately']);
     }
 
 
     // hook 住 , 并且立即执行
-    public function hookAndRun($method, Closure $callback, $before, ...$arguments)
+    // 只是提供一个方式而已 , 不是必须选择的
+    final public function hookAndRun($method, Closure $callback, $before, ...$arguments)
     {
         Hook::set($callback, [static::class, $method, $before, 'immediately']);
         return $this->run($method, ...$arguments);
@@ -39,7 +41,8 @@ class BaseService
 
 
     // 业务开始运转
-    public function run($method, ...$arguments)
+    // 只是提供一个方式而已 , 不是必须选择的
+    final public function run($method, ...$arguments)
     {
         // 前置操作
         $this->before();
@@ -73,7 +76,7 @@ class BaseService
     }
 
 
-    public static function __callStatic($name, $arguments)
+    final public static function __callStatic($name, $arguments)
     {
         if (in_array($name, ['hook', 'run'])) {
 

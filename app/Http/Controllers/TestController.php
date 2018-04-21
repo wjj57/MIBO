@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 class TestController extends Controller
@@ -10,9 +11,9 @@ class TestController extends Controller
     public function test()
     {
 
-        $data = [] ;
-        array_set($data,'workflow.input.data',['name'=>'ls']);
-        print_r($data);
+        $data = (new Request())->all();
+
+
     }
 
 }

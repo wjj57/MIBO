@@ -22,10 +22,10 @@ class Business
 
             // 记录当前的 workflow 状态为 Business
             Constant::WORKFLOW_STATUS => 'business',
-        ]);
 
-        // 将Input数据移到Business中
-        Memory::move(Constant::WORKFLOW_INPUT_DATA, Constant::WORKFLOW_BUSINESS_DATA);
+            // 设置 workflow.business.data 数据
+            Constant::WORKFLOW_BUSINESS_DATA => null
+        ]);
     }
 
     // 后置操作

@@ -24,8 +24,8 @@ class Output
             Constant::WORKFLOW_STATUS => 'output',
         ]);
 
-        // 把 workflow.business.data 中的数据移到 workflow.output.data 中 ,
-        Memory::move(Constant::WORKFLOW_BUSINESS_DATA, Constant::WORKFLOW_OUTPUT_DATA);
+        // 把 workflow.business.data 中的数据复制到 workflow.output.data 中 ,
+        Memory::copy(Constant::WORKFLOW_BUSINESS_DATA, Constant::WORKFLOW_OUTPUT_DATA);
     }
 
     // 后置操作
