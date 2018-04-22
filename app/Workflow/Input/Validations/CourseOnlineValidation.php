@@ -12,16 +12,15 @@ class CourseOnlineValidation extends BaseValidation
 
     // 验证方法的访问权限必须 < public
     // 返回验证器Validator
-    protected function index($inputData)
+    protected function buy($inputData)
     {
         $message = [
 
-            'name.required' => 'name参数为必填项',
-            'name.numeric' => 18726
+            'id.required' => '必须有id',
         ];
         return Validator::make($inputData, [
 
-            'name' => 'bail|required|numeric',
+            'id' => 'bail|required',
 
         ], $message);
     }

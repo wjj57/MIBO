@@ -10,4 +10,11 @@ class ExcelService extends BaseService
 {
 
 
+    // 自动从浏览器中下载Excel
+    public function download()
+    {
+
+
+    }
+
 }

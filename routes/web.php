@@ -19,5 +19,5 @@ Route::get('/', function () {
 Route::get('/test', 'TestController@test');
 
 
-Route::get('/courseOnline/index','CourseOnlineController@index') ;
+Route::get('/courseOnline/buy','CourseOnlineController@buy') ;
 

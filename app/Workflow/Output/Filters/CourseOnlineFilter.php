@@ -9,10 +9,8 @@ use App\WorkflowFoundation\Output\Filters\BaseFilter;
 class CourseOnlineFilter extends BaseFilter
 {
 
-    protected function index($outputData)
+    protected function buy($outputData)
     {
-
-        $outputData['name'] = 'Lvsi';
 
         return $outputData;
     }

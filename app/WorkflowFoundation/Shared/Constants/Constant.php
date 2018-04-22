@@ -32,8 +32,8 @@ class Constant
 
 
     // Hook 在 Service 执行前 , 执行后才执行业务
-    const HOOK_SERVICE_AT_BEFORE = 'before';
-    const HOOK_SERVICE_AT_AFTER = 'after';
+    const HOOK_ON_SERVICE_BEFORE = 'before';
+    const HOOK_ON_SERVICE_AFTER = 'after';
 
 
 }

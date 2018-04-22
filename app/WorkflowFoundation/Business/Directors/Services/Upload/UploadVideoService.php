@@ -1,14 +1,7 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: qingyun
- * Date: 18/4/1
- * Time: 上午12:01
- */
 
 namespace App\WorkflowFoundation\Business\Managers\Services\Upload;
 
-use App\Workflow\Memory;
 
 // 上传视频服务
 class UploadVideoService

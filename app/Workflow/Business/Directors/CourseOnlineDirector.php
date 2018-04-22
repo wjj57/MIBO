@@ -2,29 +2,50 @@
 
 namespace App\Workflow\Business\Directors;
 
+use App\Exceptions\ServiceException;
 use App\Workflow\Business\Directors\Services\CourseOnlineService;
 use App\WorkflowFoundation\Business\Directors\BaseDirector;
+use App\WorkflowFoundation\Business\Directors\Services\User\UserService;
 
 
 class CourseOnlineDirector extends BaseDirector
 {
 
 
-    protected function index($inputData, CourseOnlineService $courseOnlineService)
+    protected function buy($inputData, CourseOnlineService $courseOnlineService, UserService $userService)
     {
         // 定义业务数据
         $business = [];
 
-        // 勾住index方法 , 在index方法执行前先执行这个回调函数
-        // 并且这个回调函数的返回值决定了
-//        $courseOnlineService->hook('index', function () {
-//
-//            // 返回 true 则可以继续 , 返回 false, 则不再向下执行
-//            // return true/false ;
-//        },true);
 
-//        $business = $courseOnlineService->run('index');
+        try {
 
+            $user = $userService->get('users', ['id' => $inputData['id']]);
+
+            $res = $courseOnlineService->hookOnBeforeAndRunMethodImmediately('buy', [], function () use ($user) {
+
+                // 只有 lvsi 才能购买
+                if ($user['name'] !== 'lvsi') {
+
+                    throw new ServiceException('只有lvsi才可以购买');
+                }
+                return true;
+            });
+
+            $res2 = $courseOnlineService->hookOnBeforeAndRunMethodImmediately('pay', [], function () use ($user) {
+
+                // 只有余额 >= 1000 时才能支付
+                if ($user['money'] < 1000) {
+
+                    throw new ServiceException('抱歉,您的余额<1000,无法支付');
+                }
+                return true;
+            });
+
+        } catch (ServiceException $e) {
+
+            return responseJsonOfFailure([], true, $e->getMessage());
+        }
 
         // 返回业务数据
         return $business;

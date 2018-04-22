@@ -5,6 +5,14 @@ use App\WorkflowFoundation\Shared\Memory\Memory;
 
 // 辅助函数 : 响应
 
+if (!function_exists('makeErrorCode')) {
+
+    function makeErrorCode()
+    {
+        return rand(1000, 9000);
+    }
+}
+
 if (!function_exists('responseJsonOfSuccess')) {
 
     /**
@@ -25,6 +33,15 @@ if (!function_exists('responseJsonOfFailure')) {
      */
     function responseJsonOfFailure($data = [], $code = 4444, $msg = '失败', $link = '未知环节', $status = 400, array $headers = [], $options = JSON_UNESCAPED_UNICODE)
     {
+        // 如果 code 为 true 则表示生成一个随机码作为响应吗
+        if ($code === true) {
+
+            $code = makeErrorCode();
+        } else if ($code === false) {
+
+            $code = 4444;
+        }
+
         setExceptionData($data, $code, $msg, $link, $status, $headers, $options);
         throw new \Exception('');
     }
@@ -37,6 +54,14 @@ if (!function_exists('responseJsonOfSystemError')) {
      */
     function responseJsonOfSystemError($data = [], $code = 4444, $msg = '失败', $link = '未知环节', $status = 400, array $headers = [], $options = JSON_UNESCAPED_UNICODE)
     {
+        if ($code === true) {
+
+            $code = makeErrorCode();
+        } else if ($code === false) {
+
+            $code = 4444;
+        }
+
         if (!config('app.debug')) {
             $msg = '失败';
         }

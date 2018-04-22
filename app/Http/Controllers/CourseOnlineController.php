@@ -22,21 +22,21 @@ class CourseOnlineController extends BaseController
     }
 
 
-    public function index(Input $input, Business $business, Output $output)
+    public function buy(Input $input, Business $business, Output $output)
     {
         $input->handle([
 
-            CourseOnlineValidation::class => 'index',
+            CourseOnlineValidation::class => 'buy',
         ]);
 
         $business->handle([
 
-            CourseOnlineDirector::class => 'index'
+            CourseOnlineDirector::class => 'buy'
         ]);
 
         return $output->handle([
 
-            CourseOnlineFilter::class => 'index'
+            CourseOnlineFilter::class => 'buy'
         ]);
     }
 
