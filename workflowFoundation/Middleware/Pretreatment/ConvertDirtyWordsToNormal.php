@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Middleware\Foundation\RequestParametersPretreatment\Conversions;
+namespace workflowFoundation\Middleware\Pretreatment;
 
 use Illuminate\Foundation\Http\Middleware\TransformsRequest;
 use Illuminate\Support\Str;
 
-class ConvertNumericStringsToInt extends TransformsRequest
+class ConvertDirtyWordsToNormal extends TransformsRequest
 {
     /**
      * The attributes that should not be trimmed.

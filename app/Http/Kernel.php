@@ -2,9 +2,8 @@
 
 namespace App\Http;
 
-use   App\Http\Middleware\Foundation\RequestParametersPretreatment\Conversions\ConvertNumericStringsToInt;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
-
+use workflowFoundation\Middleware\Pretreatment\ConvertNumericStringsToInt;
 
 
 class Kernel extends HttpKernel
@@ -26,6 +25,7 @@ class Kernel extends HttpKernel
          * 自己定义的中间件
          */
         ConvertNumericStringsToInt::class,
+
 
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
         \App\Http\Middleware\TrustProxies::class,

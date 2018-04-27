@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Foundation;
+namespace workflowFoundation;
+
+
 use App\Http\Controllers\Controller;
 
 
