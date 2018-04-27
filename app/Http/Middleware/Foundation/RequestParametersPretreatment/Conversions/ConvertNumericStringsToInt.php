@@ -3,6 +3,7 @@
 namespace App\Http\Middleware\Foundation\RequestParametersPretreatment\Conversions;
 
 use Illuminate\Foundation\Http\Middleware\TransformsRequest;
+use Illuminate\Support\Str;
 
 class ConvertNumericStringsToInt extends TransformsRequest
 {
@@ -44,7 +45,7 @@ class ConvertNumericStringsToInt extends TransformsRequest
 
             if (!is_numeric($value)) {
 
-                return responseJsonOfFailure([], 4444, $key . '参数必须是整数');
+                return responseJsonOfFailure([], Str::strcat($key, '参数必须是整数'));
             }
 
             return is_numeric($value) ? intval($value) : $value;

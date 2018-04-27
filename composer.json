@@ -25,7 +25,12 @@
             "database/factories"
         ],
         "psr-4": {
-            "App\\": "app/"
+            "App\\": "app/",
+
+            "workflowFoundation\\":"workflowFoundation/",
+            "workflowOfSingerView\\":"workflowOfSingerView/",
+            "workflowOfAdminView\\":"workflowOfAdminView/",
+            "workflowOfUserView\\":"workflowOfUserView/"
         },
 
         "files" :[

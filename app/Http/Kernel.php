@@ -2,7 +2,7 @@
 
 namespace App\Http;
 
-use App\Http\Middleware\Foundation\RequestParametersPretreatment\Conversions\ConvertNumericStringsToInt;
+use   App\Http\Middleware\Foundation\RequestParametersPretreatment\Conversions\ConvertNumericStringsToInt;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 
