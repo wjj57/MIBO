@@ -2,10 +2,10 @@
 
 
 
-namespace workflowFoundation\Business\DirectorReliedServices\Upload;
+namespace workflowFoundation\Business\DirectorRelied\Upload;
 
 
-use workflowFoundation\Business\DirectorReliedServices\BaseService;
+use workflowFoundation\Business\DirectorRelied\BaseService;
 
 
 

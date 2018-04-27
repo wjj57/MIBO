@@ -1,7 +1,7 @@
 <?php
 
 
-namespace workflowFoundation\Business\DirectorReliedServices\User;
+namespace workflowFoundation\Business\DirectorRelied\User;
 
 
 

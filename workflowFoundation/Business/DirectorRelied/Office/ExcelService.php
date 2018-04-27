@@ -1,10 +1,10 @@
 <?php
 
-namespace workflowFoundation\Business\DirectorReliedServices\Office;
+namespace workflowFoundation\Business\DirectorRelied\Office;
 
 
 // Excel 服务
-use workflowFoundation\Business\DirectorReliedServices\BaseService;
+use workflowFoundation\Business\DirectorRelied\BaseService;
 
 class ExcelService extends BaseService
 {

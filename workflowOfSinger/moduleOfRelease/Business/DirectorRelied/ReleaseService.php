@@ -1,12 +1,13 @@
 <?php
 
 
-namespace workflowOfSinger\moduleOfRelease\Business\DirectorReliedServices;
+namespace workflowOfSinger\moduleOfRelease\Business\DirectorRelied;
 
 
-use workflowFoundation\Business\DirectorReliedServices\BaseService;
+use workflowFoundation\Business\DirectorRelied\BaseService;
 
 
+// 发行服务
 class ReleaseService extends BaseService
 {
 
@@ -29,6 +30,8 @@ class ReleaseService extends BaseService
 
         return "已进入专辑发行通道，审核通过后才能上架。" ;
     }
+
+
 
 
 }

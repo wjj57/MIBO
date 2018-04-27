@@ -1,6 +1,6 @@
 <?php
 
-namespace workflowFoundation\Business\DirectorReliedServices\Upload;
+namespace workflowFoundation\Business\DirectorRelied\Upload;
 
 
 // 上传服务接口

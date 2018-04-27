@@ -1,10 +1,10 @@
 <?php
 
 
-namespace workflowFoundation\Business\DirectorReliedServices\User;
+namespace workflowFoundation\Business\DirectorRelied\User;
 
 
-use workflowFoundation\Business\DirectorReliedServices\BaseService;
+use workflowFoundation\Business\DirectorRelied\BaseService;
 
 // 用户服务
 class UserService extends BaseService implements UserServiceImpl

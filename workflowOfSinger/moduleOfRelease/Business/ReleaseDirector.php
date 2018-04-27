@@ -6,8 +6,8 @@ namespace workflowOfSinger\moduleOfRelease\Business;
 
 use App\Exceptions\ServiceException;
 use workflowFoundation\Business\BaseDirector;
-use workflowFoundation\Business\DirectorReliedServices\User\UserService;
-use workflowOfSinger\moduleOfRelease\Business\DirectorReliedServices\ReleaseService;
+use workflowFoundation\Business\DirectorRelied\User\UserService;
+use workflowOfSinger\moduleOfRelease\Business\DirectorRelied\ReleaseService;
 
 
 // 业务负责人
