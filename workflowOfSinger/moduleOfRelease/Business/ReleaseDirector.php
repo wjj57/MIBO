@@ -7,7 +7,7 @@ namespace workflowOfSinger\moduleOfRelease\Business;
 use App\Exceptions\ServiceException;
 use workflowFoundation\Business\BaseDirector;
 use workflowFoundation\Business\DirectorRelied\User\UserService;
-use workflowOfSinger\moduleOfRelease\Business\DirectorRelied\ReleaseService;
+use workflowOfSinger\moduleOfRelease\Shared\ReleaseService;
 
 
 // 业务负责人

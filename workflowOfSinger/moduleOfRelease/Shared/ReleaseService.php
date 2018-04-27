@@ -1,7 +1,7 @@
 <?php
 
 
-namespace workflowOfSinger\moduleOfRelease\Business\DirectorRelied;
+namespace workflowOfSinger\moduleOfRelease\Shared;
 
 
 use workflowFoundation\Business\DirectorRelied\BaseService;
