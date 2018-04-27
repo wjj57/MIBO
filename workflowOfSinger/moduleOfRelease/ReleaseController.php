@@ -1,15 +1,15 @@
 <?php
 
-namespace workflowOfSingerView\releaseModule;
+namespace workflowOfSinger\moduleOfRelease;
 
 use App\Http\Controllers\Foundation\BaseController;
 use workflowFoundation\Business;
 use workflowFoundation\Input;
 use workflowFoundation\Output;
 use workflowOfSingerView\Common\Middleware\PermissionControl\OnlySinger;
-use workflowOfSingerView\releaseModule\Business\ReleaseDirector;
-use workflowOfSingerView\releaseModule\Input\ReleaseValidation;
-use workflowOfSingerView\releaseModule\Output\ReleaseFilter;
+use workflowOfSinger\moduleOfRelease\Business\ReleaseDirector;
+use workflowOfSinger\moduleOfRelease\Input\ReleaseValidation;
+use workflowOfSinger\moduleOfRelease\Output\ReleaseFilter;
 
 
 // 发行

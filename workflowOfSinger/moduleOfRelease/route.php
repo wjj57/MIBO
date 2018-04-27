@@ -2,7 +2,7 @@
 
 // 定义路由
 
-$class = workflowOfSingerView\releaseModule\ReleaseController::class;
+$class = workflowOfSinger\moduleOfRelease\ReleaseController::class;
 
 Route::get('/singer/release/album', $class . "@releaseAlbum");
 

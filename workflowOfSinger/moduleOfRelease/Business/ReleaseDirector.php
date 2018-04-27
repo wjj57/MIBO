@@ -1,13 +1,13 @@
 <?php
 
 
-namespace workflowOfSingerView\releaseModule\Business;
+namespace workflowOfSinger\moduleOfRelease\Business;
 
 
 use App\Exceptions\ServiceException;
 use workflowFoundation\Business\BaseDirector;
 use workflowFoundation\Business\DirectorReliedServices\User\UserService;
-use workflowOfSingerView\releaseModule\Business\DirectorReliedServices\ReleaseService;
+use workflowOfSinger\moduleOfRelease\Business\DirectorReliedServices\ReleaseService;
 
 
 // 业务负责人

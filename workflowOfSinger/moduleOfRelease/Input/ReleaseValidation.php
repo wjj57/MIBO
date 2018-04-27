@@ -1,6 +1,6 @@
 <?php
 
-namespace workflowOfSingerView\releaseModule\Input;
+namespace workflowOfSinger\moduleOfRelease\Input;
 
 use Validator;
 use workflowFoundation\Input\BaseValidation;

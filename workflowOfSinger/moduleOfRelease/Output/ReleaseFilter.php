@@ -1,6 +1,6 @@
 <?php
 
-namespace workflowOfSingerView\releaseModule\Output;
+namespace workflowOfSinger\moduleOfRelease\Output;
 
 use workflowFoundation\Output\BaseFilter;
 

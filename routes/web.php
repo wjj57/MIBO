@@ -22,8 +22,8 @@ Route::get('/', function () {
 function myScan($file)
 {
 
-    // 只有当前目录是 View后缀 或者 Module后缀 时才会遍历目录
-    if (is_dir($file) && (substr(basename($file), -4, 4) === "View" || substr(basename($file), -6, 6) === "Module")) {
+    // 只有当前目录是 workflowOf目录 或者 moduleOf目录 时才会遍历目录
+    if (is_dir($file) && (substr(basename($file), 0, 10) === "workflowOf" || substr(basename($file), 0, 8) === "moduleOf")) {
 
         $file_arr = scandir($file);
         foreach ($file_arr as $key => $value) {
@@ -44,9 +44,7 @@ function myScan($file)
     }
 }
 
-myScan(base_path('workflowOfAdminView'));
-myScan(base_path('workflowOfSingerView'));
-myScan(base_path('workflowOfUserView'));
+myScan(base_path('workflowOfSinger'));
 /*----------循环 workflow 目录并加载不同模块下的 route.php------------*/
 
 

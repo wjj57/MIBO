@@ -1,7 +1,7 @@
 <?php
 
 
-namespace workflowOfSingerView\releaseModule\Business\DirectorReliedServices;
+namespace workflowOfSinger\moduleOfRelease\Business\DirectorReliedServices;
 
 
 use workflowFoundation\Business\DirectorReliedServices\BaseService;
