@@ -6,7 +6,7 @@ use App\Http\Controllers\Foundation\BaseController;
 use workflowFoundation\Business;
 use workflowFoundation\Input;
 use workflowFoundation\Output;
-use workflowOfSingerView\Common\Middleware\PermissionControl\OnlySinger;
+use workflowOfSinger\Common\Middleware\PermissionControl\OnlySinger;
 use workflowOfSinger\moduleOfRelease\Business\ReleaseDirector;
 use workflowOfSinger\moduleOfRelease\Input\ReleaseValidation;
 use workflowOfSinger\moduleOfRelease\Output\ReleaseFilter;

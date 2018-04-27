@@ -28,9 +28,9 @@
             "App\\": "app/",
 
             "workflowFoundation\\":"workflowFoundation/",
-            "workflowOfSingerView\\":"workflowOfSingerView/",
-            "workflowOfAdminView\\":"workflowOfAdminView/",
-            "workflowOfUserView\\":"workflowOfUserView/"
+            "workflowOfSinger\\":"workflowOfSinger/",
+            "workflowOfAdmin\\":"workflowOfAdmin/",
+            "workflowOfUser\\":"workflowOfUser/"
         },
 
         "files" :[

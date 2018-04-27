@@ -1,7 +1,7 @@
 <?php
 
 
-namespace workflowOfSingerView\Common\Middleware\PermissionControl;
+namespace workflowOfSinger\Common\Middleware\PermissionControl;
 
 use Closure;
 use Illuminate\Http\Request;
