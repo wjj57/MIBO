@@ -1,6 +1,6 @@
 <?php
 
-// 定义路由
+// 配置路由 ( 非法的请求不能请求过来 )
 
 $class = DummyNamespace::class;
 

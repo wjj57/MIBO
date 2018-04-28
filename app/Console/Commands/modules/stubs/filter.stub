@@ -5,17 +5,22 @@ namespace DummyNamespace;
 use workflowFoundation\Output\BaseFilter;
 
 
-// 过滤
+// Filter
 class DummyClass extends BaseFilter
 {
 
 
-    // 方法必须为protected
-    // 参数名必须为 $outputData
+    /**
+      * Filter 的方法
+      * ①: 方法访问权限必须为 protected
+      * ②: 方法的参数只能是 $outputData
+      * ③: 返回 $outputData
+      */
     protected function dummyMethod($outputData)
     {
+        $outputData['extra'] = "这是一条额外的数据";
 
-        $outputData['extra'] = "这是一条额外的业务数据";
+        // 数据过滤 ...
 
         return $outputData;
     }

@@ -17,6 +17,15 @@ Route::get('/', function () {
 });
 
 
+Route::get('/test/{id}',function(){
+
+    // 返回当前请求对象的路由
+    return request()->route();
+
+    // 返回当前请求对象的路由参数 : id
+    return request()->route('id');
+});
+
 
 /*----------循环 workflow 目录并加载不同模块下的 route.php------------*/
 function myScan($file)

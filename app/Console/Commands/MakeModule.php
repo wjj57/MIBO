@@ -43,6 +43,9 @@ class MakeModule extends Command
         // 只输入模块名即可 , 不用再输入 moduleOf
         $moduleName = $this->argument('moduleName');
 
+        // 模块名切割成2部分
+        $sections = explode('/', $moduleName);
+
         $this->call("lvsi:makeRoute", ['moduleName' => $moduleName]);
         $this->call("lvsi:makeController", ['moduleName' => $moduleName]);
         $this->call("lvsi:makeInput", ['moduleName' => $moduleName]);
@@ -50,6 +53,7 @@ class MakeModule extends Command
         $this->call("lvsi:makeOutput", ['moduleName' => $moduleName]);
         $this->call("lvsi:makeShared", ['moduleName' => $moduleName]);
 
+        $this->info("{$sections[1]} 模块删除成功");
 
     }
 
