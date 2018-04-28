@@ -45,6 +45,7 @@ function myScan($file)
 }
 
 myScan(base_path('workflowOfSinger'));
+myScan(base_path('workflowOfAdmin'));
 /*----------循环 workflow 目录并加载不同模块下的 route.php------------*/
 
 

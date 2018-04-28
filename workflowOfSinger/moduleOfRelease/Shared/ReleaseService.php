@@ -1,10 +1,8 @@
 <?php
 
-
 namespace workflowOfSinger\moduleOfRelease\Shared;
 
-
-use workflowFoundation\Business\DirectorRelied\BaseService;
+use workflowFoundation\Shared\Services\BaseService;
 
 
 // 发行服务

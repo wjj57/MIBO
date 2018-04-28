@@ -35,7 +35,7 @@ class Constant
 
 
     /*-------------响应部分-----------------*/
-    const WORKFLOW_RESPONSE_ENABLE = 'workflow.response.enable';
+    const WORKFLOW_RESPONSE_ENABLE = 'workflow.responseNormally.enable';
     const WORKFLOW_RESPONSE_DATA = 'workflow.response.data';
     const WORKFLOW_RESPONSE_CODE = 'workflow.response.code';
     const WORKFLOW_RESPONSE_MSG = 'workflow.response.msg';

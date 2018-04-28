@@ -3,8 +3,7 @@
 
 namespace workflowFoundation\Business\DirectorRelied\User;
 
-
-use workflowFoundation\Business\DirectorRelied\BaseService;
+use workflowFoundation\Shared\Services\BaseService;
 
 // 用户服务
 class UserService extends BaseService implements UserServiceImpl

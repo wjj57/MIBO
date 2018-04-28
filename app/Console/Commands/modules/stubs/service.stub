@@ -2,7 +2,7 @@
 
 namespace DummyNamespace;
 
-use workflowFoundation\Business\DirectorRelied\BaseService;
+use workflowFoundation\Shared\Services;
 
 class DummyClass extends BaseService
 {

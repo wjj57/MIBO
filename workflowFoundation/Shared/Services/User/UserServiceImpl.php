@@ -1,10 +1,8 @@
 <?php
 
-
 namespace workflowFoundation\Business\DirectorRelied\User;
 
-
-
+// 用户服务接口
 interface UserServiceImpl
 {
 

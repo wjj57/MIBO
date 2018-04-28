@@ -1,6 +1,6 @@
 <?php
 
-namespace workflowFoundation\Business\DirectorRelied;
+namespace workflowFoundation\Shared\Services;
 
 
 use App\Exceptions\ServiceException;

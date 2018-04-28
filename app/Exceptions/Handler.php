@@ -47,7 +47,7 @@ class Handler extends ExceptionHandler
     public function render($request, Exception $exception)
     {
         // 如果可以响应
-        if (enableToResponse()) {
+        if (enableToResponseNormally()) {
 
             // 获取响应数据
             list($enable, $data, $code, $msg, $status, $headers, $options) = getResponseData();
@@ -60,7 +60,7 @@ class Handler extends ExceptionHandler
         }
 
         // 不能响应 , 肯定是发生了一些不可预料的异常/错误
-        return responseUnexpectedException($exception);
+        return responseWithUnexpectedException($exception);
         // return parent::render($request, $exception);
     }
 }

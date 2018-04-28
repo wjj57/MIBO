@@ -85,7 +85,10 @@ if (!function_exists('setResponseData')) {
     {
         Memory::set([
 
-            'workflow.response.enable' => true,
+            // 是否可以正常响应 => 是的
+            'workflow.responseNormally.enable' => true,
+
+
             'workflow.response.data' => $data,
             'workflow.response.code' => $code,
             'workflow.response.msg' => $msg,
@@ -97,28 +100,36 @@ if (!function_exists('setResponseData')) {
     }
 }
 
-if (!function_exists('enableToResponse')) {
+if (!function_exists('enableToResponseNormally')) {
 
-    function enableToResponse()
+    // 现在是否可以正常响应
+    function enableToResponseNormally()
     {
 
-        return (Memory::has('workflow.response.enable') && Memory::get('workflow.response.enable') === true) ? true : false;
+        return (Memory::has('workflow.responseNormally.enable') && Memory::get('workflow.responseNormally.enable') === true) ? true : false;
     }
 }
 
-if (!function_exists('responseUnexpectedException')) {
+if (!function_exists('responseWithUnexpectedException')) {
 
-    function responseUnexpectedException($e)
+    /**
+     * 响应未意料到的意外异常
+     * @param Exception $e
+     * @return \Illuminate\Http\JsonResponse
+     */
+    function responseWithUnexpectedException($e)
     {
 
         $msg = (config('app.debug')) ? $e->getMessage() : '失败';
+
+        $msg = (!empty(trim($msg)))?:"失败";
 
         return response()->json([
 
             'code' => makeErrorCode(),
             'msg' => $msg,
             'data' => [],
-        ]);
+        ],200,[],JSON_UNESCAPED_UNICODE);
 
     }
 }
@@ -129,7 +140,9 @@ if (!function_exists('getResponseData')) {
     {
         return [
 
-            Memory::get('workflow.response.enable'),
+            // 是否可以正常响应
+            Memory::get('workflow.responseNormally.enable'),
+
             Memory::get('workflow.response.data'),
             Memory::get('workflow.response.code'),
             Memory::get('workflow.response.msg'),

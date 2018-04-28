@@ -2,8 +2,8 @@
 
 namespace workflowFoundation\Business\DirectorRelied\Upload;
 
-use workflowFoundation\Business\DirectorRelied\BaseService;
 
+use workflowFoundation\Shared\Services\BaseService;
 
 class UploadImgService extends BaseService implements UploadServiceImpl
 {

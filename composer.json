@@ -35,9 +35,8 @@
 
         "files" :[
 
-            "app/Helpers/response.php",
-            "app/Helpers/queue.php"
-
+            "workflowFoundation/Shared/Helpers/queue.php",
+            "workflowFoundation/Shared/Helpers/response.php"
         ]
     },
     "autoload-dev": {
