@@ -24,7 +24,11 @@ class Input
             Constant::WORKFLOW_STATUS => 'input',
 
             // 存储当前的 workflow 的数据
-            Constant::WORKFLOW_INPUT_DATA => app('request')->all()
+            Constant::WORKFLOW_INPUT_DATA => request()->all()
+            // request()->all() 会获取当前请求所有的参数 ,
+            // 包括 get参数 和 post参数 ,
+            // 但是 post 请求的参数会覆盖 get 请求的参数
+
         ]);
     }
 

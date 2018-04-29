@@ -46,6 +46,13 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        // 清空缓冲区
+        ob_end_clean();
+        ob_start();
+
+        // 无论异常被调用多少次(按理说只有1次,但是很多次不知道为什么被调用了多次) ,
+        // 也能保证之后的输出只有1次
+
         // 如果可以响应
         if (enableToResponseNormally()) {
 
@@ -63,4 +70,5 @@ class Handler extends ExceptionHandler
         return responseWithUnexpectedException($exception);
         // return parent::render($request, $exception);
     }
+
 }

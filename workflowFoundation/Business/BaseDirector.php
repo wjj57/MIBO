@@ -42,8 +42,6 @@ class BaseDirector
         // 开始执行
         Memory::update(Constant::WORKFLOW_BUSINESS_DATA, $this->$method(...$arguments));
 
-
-        // 验证结束并且已经通过验证
         // 调用后置操作
         $this->after();
 

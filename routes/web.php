@@ -16,11 +16,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-
-
-
-
 /*----------循环 workflow 目录并加载不同模块下的 route.php------------*/
 function myScan($file)
 {
@@ -46,8 +41,8 @@ function myScan($file)
         }
     }
 }
-/*----------循环 workflow 目录并加载不同模块下的 route.php------------*/
 
+/*----------循环 workflow 目录并加载不同模块下的 route.php------------*/
 
 
 // 配置需要扫描的目录

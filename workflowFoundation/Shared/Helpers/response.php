@@ -106,7 +106,9 @@ if (!function_exists('enableToResponseNormally')) {
     function enableToResponseNormally()
     {
 
-        return (Memory::has('workflow.responseNormally.enable') && Memory::get('workflow.responseNormally.enable') === true) ? true : false;
+        $res = (Memory::has('workflow.responseNormally.enable') && Memory::get('workflow.responseNormally.enable') === true) ? true : false;
+        Memory::set('workflow.responseNormally.enable',false);
+        return $res ;
     }
 }
 
@@ -120,17 +122,19 @@ if (!function_exists('responseWithUnexpectedException')) {
     function responseWithUnexpectedException($e)
     {
 
-        $msg = (config('app.debug')) ? $e->getMessage() : '失败';
+        $msg = config('app.debug') ? $e->getMessage() : '失败';
 
-        $msg = (!empty(trim($msg)))?:"失败";
+        if(empty(trim($msg))){
+
+            $msg = "失败";
+        }
 
         return response()->json([
 
             'code' => makeErrorCode(),
             'msg' => $msg,
             'data' => [],
-        ],200,[],JSON_UNESCAPED_UNICODE);
-
+        ], 200, [], JSON_UNESCAPED_UNICODE);
     }
 }
 
