@@ -42,7 +42,7 @@ class DeleteInput extends Command
         $moduleName = $this->argument('moduleName');
 
         $arr = explode('/', $moduleName);
-        $moduleBeforeSection = $arr[0];
+        $moduleBeforeSection = "workflowOf" . ucwords($arr[0]);
         $moduleAfterSection = ucwords($arr[1]);
 
         // 需要创建的类的命名空间

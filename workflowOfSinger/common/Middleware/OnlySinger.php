@@ -1,7 +1,7 @@
 <?php
 
 
-namespace workflowOfSinger\Common\Middleware\AccessControl;
+namespace workflowOfSinger\Common\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;

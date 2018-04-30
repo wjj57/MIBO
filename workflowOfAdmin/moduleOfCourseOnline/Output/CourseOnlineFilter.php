@@ -25,4 +25,12 @@ class CourseOnlineFilter extends BaseFilter
         return $outputData;
     }
 
+
+     protected function index($outputData)
+     {
+
+        return $outputData;
+     }
+
+
 }

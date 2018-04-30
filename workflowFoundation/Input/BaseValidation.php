@@ -43,7 +43,7 @@ class BaseValidation
 
     public function __call($method, $arguments)
     {
-        // 方法如果不存在则报错给客户端
+        // 方法如果不存在则返回系统错误
         if (!method_exists($this, $method)) {
 
             return responseJsonOfSystemError([], Str::strcat('当前的 Validation 不存在', $method, '方法'));

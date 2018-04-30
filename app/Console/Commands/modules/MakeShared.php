@@ -42,7 +42,7 @@ class MakeShared extends Command
         $moduleName = $this->argument('moduleName');
 
         $arr = explode('/', $moduleName);
-        $moduleBeforeSection = $arr[0];
+        $moduleBeforeSection = "workflowOf" . ucwords($arr[0]);
         $moduleAfterSection = ucwords($arr[1]);
 
         // 需要创建的类的命名空间
@@ -54,7 +54,7 @@ class MakeShared extends Command
             mkdir($dir, 0777, true);
         }
 
-        /*----------------创建Service------------------*/
+        /*----------------创建Service( 模块下共用的Service )------------------*/
         // 需要创建的文件
         $file = $dir . '/' . $moduleAfterSection."Service.php";
         $handle = fopen($file, 'w+'); // 创建文件
@@ -67,7 +67,28 @@ class MakeShared extends Command
         fwrite($handle, $content);
 
         $this->info("Shared-Service 创建成功");
-        /*----------------创建Service------------------*/
+        /*----------------创建Service( 模块下共用的Service )------------------*/
+
+
+
+
+        /*----------------创建Service( 模块下共用的Service )------------------*/
+        // 需要创建的文件
+        $file = $dir . '/' . $moduleAfterSection."IndexService.php";
+        $handle = fopen($file, 'w+'); // 创建文件
+
+        // 从 stub 文件中找到模板代码
+        $content = file_get_contents(__DIR__."/stubs/indexService.stub");
+        $content = str_replace(['DummyNamespace','DummyClass'],[ implode("\\",explode("/",$namespace)) ,$moduleAfterSection."IndexService"],$content);
+
+        // 写入
+        fwrite($handle, $content);
+
+        $this->info("Shared-IndexService 创建成功");
+        /*----------------创建Service( 模块下共用的Service )------------------*/
+
+
+
 
 
         /*----------------创建Model------------------*/

@@ -4,14 +4,11 @@ namespace workflowOfAdmin\moduleOfCourseOnline\Shared;
 
 use workflowFoundation\Shared\Services\BaseService;
 
-// Service
+
+// 此模块下共用的 Service
 class CourseOnlineService extends BaseService
 {
-    /**
-      * Service 的方法
-      * ①: 方法访问权限必须为 public
-      * ②: 做真正的业务逻辑操作
-      */
+
     public function dummyMethod()
     {
 
@@ -29,8 +26,5 @@ class CourseOnlineService extends BaseService
 
         return ;
     }
-
-
-
 
 }

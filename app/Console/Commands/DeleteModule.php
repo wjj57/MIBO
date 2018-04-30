@@ -45,6 +45,7 @@ class DeleteModule extends Command
 
         // 模块名切割成2部分
         $sections = explode('/', $moduleName);
+        $sections[0] = "workflowOf" . $sections[0];
 
         $this->call("lvsi:deleteRoute", ['moduleName' => $moduleName]);
         $this->call("lvsi:deleteController", ['moduleName' => $moduleName]);
@@ -59,9 +60,14 @@ class DeleteModule extends Command
         $wantToDeleteAll = strtolower($this->argument("wantToDeleteAll"));
         if ($wantToDeleteAll === 'y') {
 
-            if(is_dir($dir = base_path( "{$sections[0]}/moduleOf" . ucwords($sections[1]) ))){
+            if (is_dir($dir = trim(base_path("{$sections[0]}/moduleOf" . ucwords($sections[1]))))) {
 
-                system('rm -rf ' . $dir );
+                if (!empty($dir)) {
+
+                    // 为了安全 , 坚决不使用 rm 命令
+                    $this->info("还是你自己删除 module 目录吧");
+
+                }
                 $this->info("{$sections[1]} 模块删除成功 - 全部删除");
             }
         }

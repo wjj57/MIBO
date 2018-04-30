@@ -42,11 +42,11 @@ class MakeInput extends Command
         $moduleName = $this->argument('moduleName');
 
         $arr = explode('/', $moduleName);
-        $moduleBeforeSection = $arr[0];
+        $moduleBeforeSection = "workflowOf" . ucwords($arr[0]);
         $moduleAfterSection = ucwords($arr[1]);
 
         // 需要创建的类的命名空间
-        $namespace = "{$moduleBeforeSection}/moduleOf" . $moduleAfterSection . '/Input' ;
+        $namespace = "{$moduleBeforeSection}/moduleOf" . $moduleAfterSection . '/Input';
 
         // 需要创建的目录
         $dir = base_path($namespace);
@@ -55,13 +55,13 @@ class MakeInput extends Command
         }
 
         // 需要创建的文件
-        $file = $dir . '/' . $moduleAfterSection."Validation.php";
+        $file = $dir . '/' . $moduleAfterSection . "Validation.php";
         $handle = fopen($file, 'w+'); // 创建文件
 
 
         // 从 stub 文件中找到模板代码
-        $content = file_get_contents(__DIR__."/stubs/validation.stub");
-        $content = str_replace(['DummyNamespace','DummyClass'],[ implode("\\",explode("/",$namespace)) ,$moduleAfterSection."Validation"],$content);
+        $content = file_get_contents(__DIR__ . "/stubs/validation.stub");
+        $content = str_replace(['DummyNamespace', 'DummyClass'], [implode("\\", explode("/", $namespace)), $moduleAfterSection . "Validation"], $content);
 
         // 写入
         fwrite($handle, $content);

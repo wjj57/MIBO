@@ -10,20 +10,6 @@ use workflowFoundation\Shared\Hooks\Hook;
 
 class BaseService
 {
-    // 前置操作
-    protected function before()
-    {
-
-    }
-
-    // 后置操作
-    protected function after()
-    {
-
-
-    }
-
-
 
 
 
@@ -59,10 +45,6 @@ class BaseService
     final public function systemCallMethod($method, array $arguments)
     {
 
-        // 前置操作
-        $this->before();
-
-
         /* -------> 勾住,在业务执行前执行 */
         $rawHookInfo = [static::class, $method, 'before'];
         $hookName = Hook::generateHookName($rawHookInfo);
@@ -95,10 +77,6 @@ class BaseService
             // 则手动抛出服务异常
             throw new ServiceException('服务的结果不符合预期, 被迫中止...');
         } /* <------- 勾住,在业务执行后执行 */
-
-
-        // 后置操作
-        $this->after();
 
         // 业务执行完成后, 会把返回值返回( 可能为 null )
         return (isset($returnValue) && !is_null($returnValue)) ? $returnValue : null;

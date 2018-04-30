@@ -42,7 +42,7 @@ class DeleteShared extends Command
         $moduleName = $this->argument('moduleName');
 
         $arr = explode('/', $moduleName);
-        $moduleBeforeSection = $arr[0];
+        $moduleBeforeSection = "workflowOf" . ucwords($arr[0]);
         $moduleAfterSection = ucwords($arr[1]);
 
         // 需要创建的类的命名空间
@@ -62,6 +62,17 @@ class DeleteShared extends Command
         }
         $this->info("Shared-Service 删除成功");
         /*----------------删除Service------------------*/
+
+
+        /*----------------删除 IndexService------------------*/
+        // 需要删除的文件
+        $file = $dir . '/' . $moduleAfterSection."IndexService.php";
+        if(file_exists($file)){
+
+            unlink($file);
+        }
+        $this->info("Shared-IndexService 删除成功");
+        /*----------------删除 IndexService------------------*/
 
 
         /*----------------删除Model------------------*/

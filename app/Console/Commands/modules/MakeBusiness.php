@@ -43,11 +43,11 @@ class MakeBusiness extends Command
         $moduleName = $this->argument('moduleName');
 
         $arr = explode('/', $moduleName);
-        $moduleBeforeSection = $arr[0];
+        $moduleBeforeSection = "workflowOf" . ucwords($arr[0]);
         $moduleAfterSection = ucwords($arr[1]);
 
         // 需要创建的类的命名空间
-        $namespace = "{$moduleBeforeSection}/moduleOf" . $moduleAfterSection . '/Business' ;
+        $namespace = "{$moduleBeforeSection}/moduleOf" . $moduleAfterSection . '/Business';
 
         // 需要创建的目录
         $dir = base_path($namespace);
@@ -56,13 +56,17 @@ class MakeBusiness extends Command
         }
 
         // 需要创建的文件
-        $file = $dir . '/' . $moduleAfterSection."Director.php";
+        $file = $dir . '/' . $moduleAfterSection . "Director.php";
         $handle = fopen($file, 'w+'); // 创建文件
 
 
         // 从 stub 文件中找到模板代码
-        $content = file_get_contents(__DIR__."/stubs/director.stub");
-        $content = str_replace(['DummyNamespace','DummyClass'],[ implode("\\",explode("/",$namespace)) ,$moduleAfterSection."Director"],$content);
+        $content = file_get_contents(__DIR__ . "/stubs/director.stub");
+        $content = str_replace(['DummyNamespace', 'DummyClass'], [
+            implode("\\", explode("/", $namespace)),
+            $moduleAfterSection . "Director"
+        ], $content);
+
 
         // 写入
         fwrite($handle, $content);

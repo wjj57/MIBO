@@ -1,14 +1,17 @@
 <?php
 
-namespace DummyNamespace;
+namespace workflowOfSinger\common\Shared;
 
 use workflowFoundation\Shared\Services\BaseService;
 
-
-// 此模块下共用的 Service
-class DummyClass extends BaseService
+// Service
+class TestService extends BaseService
 {
-
+    /**
+      * Service 的方法
+      * ①: 方法访问权限必须为 public
+      * ②: 做真正的业务逻辑操作
+      */
     public function dummyMethod()
     {
 
@@ -26,5 +29,8 @@ class DummyClass extends BaseService
 
         return ;
     }
+
+
+
 
 }
