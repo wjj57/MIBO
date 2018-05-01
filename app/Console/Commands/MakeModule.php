@@ -53,6 +53,8 @@ class MakeModule extends Command
         $this->call("lvsi:makeOutput", ['moduleName' => $moduleName]);
         $this->call("lvsi:makeShared", ['moduleName' => $moduleName]);
 
+        $this->call("lvsi:makeCommon", ['sideName' => $sections[0]]);
+
         $this->info("{$sections[1]} 模块创建成功");
 
     }

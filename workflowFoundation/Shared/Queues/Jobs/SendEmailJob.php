@@ -7,6 +7,7 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Support\Facades\Log;
 
 class SendEmailJob implements ShouldQueue
 {
@@ -29,6 +30,6 @@ class SendEmailJob implements ShouldQueue
      */
     public function handle()
     {
-        //
+        Log::emergency('紧急处理 : 邮件发送成功');
     }
 }

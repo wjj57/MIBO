@@ -67,6 +67,12 @@ class MakeBusiness extends Command
             $moduleAfterSection . "Director"
         ], $content);
 
+        $content = str_replace(['DummyModelNamespace', 'DummyModelClass', 'dummyModelObj'], [
+            implode("\\", explode("/", "{$moduleBeforeSection}/moduleOf" . $moduleAfterSection . "/Shared/".$moduleAfterSection . "Model")),
+            $moduleAfterSection . "Model",
+            lcfirst($moduleAfterSection) . "Model"
+        ], $content);
+
 
         // 写入
         fwrite($handle, $content);

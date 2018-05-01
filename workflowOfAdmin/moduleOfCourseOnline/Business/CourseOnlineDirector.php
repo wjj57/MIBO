@@ -4,7 +4,7 @@ namespace workflowOfAdmin\moduleOfCourseOnline\Business;
 
 use App\Exceptions\ServiceException;
 use workflowFoundation\Business\BaseDirector;
-
+use workflowOfAdmin\moduleOfCourseOnline\Shared\CourseOnlineModel;
 
 /**
  * 业务负责人
@@ -51,7 +51,7 @@ class CourseOnlineDirector extends BaseDirector
 
 
 
-     protected function index($inputData)
+     protected function index($inputData, CourseOnlineModel $courseOnlineModel)
      {
         // 定义业务数据
         $business = [];

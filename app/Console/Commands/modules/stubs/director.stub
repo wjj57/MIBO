@@ -4,7 +4,7 @@ namespace DummyNamespace;
 
 use App\Exceptions\ServiceException;
 use workflowFoundation\Business\BaseDirector;
-
+use DummyModelNamespace;
 
 /**
  * 业务负责人
@@ -51,7 +51,7 @@ class DummyClass extends BaseDirector
 
 
 
-     protected function index($inputData)
+     protected function index($inputData, DummyModelClass $dummyModelObj)
      {
         // 定义业务数据
         $business = [];
