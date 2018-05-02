@@ -12,7 +12,7 @@ class DeleteOutput extends Command
      *
      * @var string
      */
-    protected $signature = 'lvsi:deleteOutput {moduleName}';
+    protected $signature = 'qk:deleteOutput {moduleName}';
 
     /**
      * 控制台命令说明。

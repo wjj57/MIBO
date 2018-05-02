@@ -14,7 +14,7 @@ class MakeModule extends Command
      *
      * @var string
      */
-    protected $signature = 'lvsi:makeModule {moduleName}';
+    protected $signature = 'qk:makeModule {moduleName}';
 
     /**
      * 控制台命令说明。
@@ -46,14 +46,14 @@ class MakeModule extends Command
         // 模块名切割成2部分
         $sections = explode('/', $moduleName);
 
-        $this->call("lvsi:makeRoute", ['moduleName' => $moduleName]);
-        $this->call("lvsi:makeController", ['moduleName' => $moduleName]);
-        $this->call("lvsi:makeInput", ['moduleName' => $moduleName]);
-        $this->call("lvsi:makeBusiness", ['moduleName' => $moduleName]);
-        $this->call("lvsi:makeOutput", ['moduleName' => $moduleName]);
-        $this->call("lvsi:makeShared", ['moduleName' => $moduleName]);
+        $this->call("qk:makeRoute", ['moduleName' => $moduleName]);
+        $this->call("qk:makeController", ['moduleName' => $moduleName]);
+        $this->call("qk:makeInput", ['moduleName' => $moduleName]);
+        $this->call("qk:makeBusiness", ['moduleName' => $moduleName]);
+        $this->call("qk:makeOutput", ['moduleName' => $moduleName]);
+        $this->call("qk:makeShared", ['moduleName' => $moduleName]);
 
-        $this->call("lvsi:makeCommon", ['sideName' => $sections[0]]);
+        $this->call("qk:makeCommon", ['sideName' => $sections[0]]);
 
         $this->info("{$sections[1]} 模块创建成功");
 

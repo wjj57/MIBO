@@ -12,7 +12,7 @@ class DeleteBusiness extends Command
      *
      * @var string
      */
-    protected $signature = 'lvsi:deleteBusiness {moduleName}';
+    protected $signature = 'qk:deleteBusiness {moduleName}';
 
     /**
      * 控制台命令说明。

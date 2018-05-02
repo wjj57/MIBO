@@ -14,7 +14,7 @@ class MakeCommon extends Command
      *
      * @var string
      */
-    protected $signature = 'lvsi:makeCommon {sideName}';
+    protected $signature = 'qk:makeCommon {sideName}';
 
     /**
      * 控制台命令说明。

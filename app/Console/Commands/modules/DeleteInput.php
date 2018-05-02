@@ -12,7 +12,7 @@ class DeleteInput extends Command
      *
      * @var string
      */
-    protected $signature = 'lvsi:deleteInput {moduleName}';
+    protected $signature = 'qk:deleteInput {moduleName}';
 
     /**
      * 控制台命令说明。

@@ -12,7 +12,7 @@ class DeleteController extends Command
      *
      * @var string
      */
-    protected $signature = 'lvsi:deleteController {moduleName}';
+    protected $signature = 'qk:deleteController {moduleName}';
 
     /**
      * 控制台命令说明。

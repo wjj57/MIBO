@@ -12,7 +12,7 @@ class DeleteShared extends Command
      *
      * @var string
      */
-    protected $signature = 'lvsi:deleteShared {moduleName}';
+    protected $signature = 'qk:deleteShared {moduleName}';
 
     /**
      * 控制台命令说明。

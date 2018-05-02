@@ -14,7 +14,7 @@ class DeleteModule extends Command
      *
      * @var string
      */
-    protected $signature = 'lvsi:deleteModule {moduleName} {wantToDeleteAll?}';
+    protected $signature = 'qk:deleteModule {moduleName} {wantToDeleteAll?}';
 
     /**
      * 控制台命令说明。
@@ -47,16 +47,16 @@ class DeleteModule extends Command
         $sections = explode('/', $moduleName);
         $sections[0] = "workflowOf" . $sections[0];
 
-        $this->call("lvsi:deleteRoute", ['moduleName' => $moduleName]);
-        $this->call("lvsi:deleteController", ['moduleName' => $moduleName]);
-        $this->call("lvsi:deleteInput", ['moduleName' => $moduleName]);
-        $this->call("lvsi:deleteBusiness", ['moduleName' => $moduleName]);
-        $this->call("lvsi:deleteOutput", ['moduleName' => $moduleName]);
-        $this->call("lvsi:deleteShared", ['moduleName' => $moduleName]);
+        $this->call("qk:deleteRoute", ['moduleName' => $moduleName]);
+        $this->call("qk:deleteController", ['moduleName' => $moduleName]);
+        $this->call("qk:deleteInput", ['moduleName' => $moduleName]);
+        $this->call("qk:deleteBusiness", ['moduleName' => $moduleName]);
+        $this->call("qk:deleteOutput", ['moduleName' => $moduleName]);
+        $this->call("qk:deleteShared", ['moduleName' => $moduleName]);
 
         $this->info("{$sections[1]} 模块删除成功");
 
-        // 是否想要删除此module全部的内容 ( php artisan lvsi:deleteModule workflowOfAdmin/courseOnline y )
+        // 是否想要删除此module全部的内容 ( php artisan qk:deleteModule workflowOfAdmin/courseOnline y )
         $wantToDeleteAll = strtolower($this->argument("wantToDeleteAll"));
         if ($wantToDeleteAll === 'y') {
 

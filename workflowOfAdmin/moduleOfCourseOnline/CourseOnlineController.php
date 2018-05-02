@@ -20,13 +20,13 @@ class CourseOnlineController extends BaseController
     function __construct()
     {
         // 此中间件会应用到此控制器的所有的方法里
-        // $this->middleware("");
+         $this->middleware("");
 
         // 此中间件只会应用到此控制器除 X 方法之外的所有方法上
-        // $this->middleware("")->except('');
+         $this->middleware("")->except('');
 
         // 此中间件只会应用到此控制器的 X 方法上
-        // $this->middleware("")->only('');
+         $this->middleware("")->only('');
 
         // 中间件全部穿过完以后 , 才会执行以下控制器的方法
     }

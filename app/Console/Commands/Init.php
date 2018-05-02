@@ -11,7 +11,7 @@ class Init extends Command
      *
      * @var string
      */
-    protected $signature = 'lvsi:init';
+    protected $signature = 'qk:init';
 
     /**
      * The console command description.

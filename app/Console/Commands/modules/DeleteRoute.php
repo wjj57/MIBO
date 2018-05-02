@@ -12,7 +12,7 @@ class DeleteRoute extends Command
      *
      * @var string
      */
-    protected $signature = 'lvsi:deleteRoute {moduleName}';
+    protected $signature = 'qk:deleteRoute {moduleName}';
 
     /**
      * 控制台命令说明。

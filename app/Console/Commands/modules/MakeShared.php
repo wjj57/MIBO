@@ -12,7 +12,7 @@ class MakeShared extends Command
      *
      * @var string
      */
-    protected $signature = 'lvsi:makeShared {moduleName}';
+    protected $signature = 'qk:makeShared {moduleName}';
 
     /**
      * 控制台命令说明。

@@ -12,7 +12,7 @@ class MakeOutput extends Command
      *
      * @var string
      */
-    protected $signature = 'lvsi:makeOutput {moduleName}';
+    protected $signature = 'qk:makeOutput {moduleName}';
 
     /**
      * 控制台命令说明。

@@ -12,7 +12,7 @@ class MakeInput extends Command
      *
      * @var string
      */
-    protected $signature = 'lvsi:makeInput {moduleName}';
+    protected $signature = 'qk:makeInput {moduleName}';
 
     /**
      * 控制台命令说明。

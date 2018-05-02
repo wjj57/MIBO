@@ -12,7 +12,7 @@ class MakeController extends Command
      *
      * @var string
      */
-    protected $signature = 'lvsi:makeController {moduleName}';
+    protected $signature = 'qk:makeController {moduleName}';
 
     /**
      * 控制台命令说明。

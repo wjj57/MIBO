@@ -12,7 +12,7 @@ class MakeRoute extends Command
      *
      * @var string
      */
-    protected $signature = 'lvsi:makeRoute {moduleName}';
+    protected $signature = 'qk:makeRoute {moduleName}';
 
     /**
      * 控制台命令说明。

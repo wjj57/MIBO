@@ -13,7 +13,7 @@ class MakeBusiness extends Command
      *
      * @var string
      */
-    protected $signature = 'lvsi:makeBusiness {moduleName}';
+    protected $signature = 'qk:makeBusiness {moduleName}';
 
     /**
      * 控制台命令说明。
